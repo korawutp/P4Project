@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:workproject/screens/profile.dart';
 import 'check_screen.dart';
 import 'login.dart';
 
@@ -12,44 +13,6 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          MaterialButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const CheckScreen()),
-              );
-            },
-            minWidth: double.infinity,
-            height: 45,
-            color: Colors.black,
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 80),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            child: const Text(
-              "Check",
-              style: TextStyle(color: Colors.white, fontSize: 16.0),
-            ),
-          ),
-          MaterialButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const LoginScreen()),
-              );
-            },
-            minWidth: double.infinity,
-            height: 45,
-            color: Colors.black,
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 80),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            child: const Text(
-              "Log Out",
-              style: TextStyle(color: Colors.white, fontSize: 16.0),
-            ),
-          ),
           const SizedBox(height: 48),
 
           // Hello
@@ -102,11 +65,56 @@ class HomeScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 24.0),
             child: Divider(),
           ),
+          // Profile button
+          MaterialButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileScreen()),
+              );
+            },
+            minWidth: double.infinity,
+            height: 45,
+            color: Colors.white,
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 80),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            child: const Text(
+              "Profile",
+              style: TextStyle(color: Colors.black, fontSize: 16.0),
+            ),
+          ),
+          // Logout button
+          MaterialButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginScreen()),
+              );
+            },
+            minWidth: double.infinity,
+            height: 45,
+            color: Colors.black,
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 80),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            child: const Text(
+              "Log Out",
+              style: TextStyle(color: Colors.white, fontSize: 16.0),
+            ),
+          ),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const CheckScreen()),
+          );
+        },
         child: Icon(Icons.add),
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
