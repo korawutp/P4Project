@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:workproject/screens/login.dart';
+import 'app.dart';
 
+/// -- Entry Point of Flutter App --
 void main() {
-  runApp(
-    MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'MyFirstApp',
-      home: LoginScreen(),
-    ),
-  );
+  /// -- Run App --
+  runApp(const App());
 }
+
