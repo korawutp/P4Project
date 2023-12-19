@@ -182,6 +182,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "lottie",
+      "rootUri": "file:///C:/Users/koraw/AppData/Local/Pub/Cache/hosted/pub.dev/lottie-2.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
       "name": "matcher",
       "rootUri": "file:///C:/Users/koraw/AppData/Local/Pub/Cache/hosted/pub.dev/matcher-0.12.16",
       "packageUri": "lib/",
@@ -416,7 +422,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2023-12-14T15:13:37.213497Z",
+  "generated": "2023-12-18T20:54:06.915728Z",
   "generator": "pub",
   "generatorVersion": "3.2.2"
 }

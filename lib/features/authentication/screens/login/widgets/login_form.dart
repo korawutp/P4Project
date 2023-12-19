@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:workproject/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:workproject/features/authentication/screens/signup/signup.dart';
-import 'package:workproject/navigation_menu.dart';
+import 'package:workproject/features/navigationmenu/navigation_menu.dart';
 import 'package:workproject/utils/constants/sizes.dart';
 import 'package:workproject/utils/constants/text_strings.dart';
 

@@ -29,6 +29,7 @@ dependencies:
   # State Management
   get: ^4.6.6
   get_storage: ^2.1.1
+  lottie: ^2.7.0
 
 
 # ------------------- DEV DEPENDENCIES ------------------- #
@@ -57,4 +58,10 @@ flutter:
 
 
   # ------------------- LOCAL FONTS ------------------- #
-  
+#fonts:
+  #- family:
+    #fonts:
+      #-assets: fonts/___.ttf
+      #style: italic
+      #weight:
+      #สร้างfolder fonts ใน assets แล้วใส่.ttfลงไป
