@@ -19,8 +19,10 @@ class OnBoardingNextButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () => OnBoardingController.instance.nextPage(),
         style: ElevatedButton.styleFrom(
+            elevation: 0,
+            side: BorderSide.none, // Removes border
             shape: const CircleBorder(),
-            backgroundColor: dark ? MyAppColors.primaryColor : Colors.black),
+            backgroundColor: dark ? MyAppColors.primary : MyAppColors.black),
         child: const Icon(Iconsax.arrow_right_3),
       ),
     );

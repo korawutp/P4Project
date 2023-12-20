@@ -40,9 +40,12 @@ class MyAppImage {
       'assets/icons/navigation_menu/history_dark.png';
   static const String historyLight =
       'assets/icons/navigation_menu/history_light.png';
-  static const String profile = 'assets/icons/navigation_menu/profile.png';
+  // static const String profile = 'assets/icons/navigation_menu/profile.png';
   static const String profileDark =
       'assets/icons/navigation_menu/profile_dark.png';
   static const String profileLight =
       'assets/icons/navigation_menu/profile_light.png';
+
+  // -- Profile Images
+  static const String profile = 'assets/images/profile.png';
 }
