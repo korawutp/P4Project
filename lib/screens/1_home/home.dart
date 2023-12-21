@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:workproject/common/widgets/appbar/appbar.dart';
-import 'package:workproject/screens/1_home/widgets/silver_item.dart';
+import 'package:lottie/lottie.dart';
+import 'package:workproject/screens/1_home/widgets/circle_button.dart';
 import 'package:workproject/utils/constants/colors.dart';
 import 'package:workproject/utils/helpers/helper_functions.dart';
 
@@ -12,11 +12,46 @@ class HomeScreen extends StatelessWidget {
     final darkMode = MyAppHelperFunctions.isDarkMode(context);
 
     return Scaffold(
-      backgroundColor: darkMode ? MyAppColors.dark : MyAppColors.light,
+      extendBodyBehindAppBar: true,
+      backgroundColor: Color(0xFFFCF1F1),
       body: CustomScrollView(
         slivers: [
-          // Appbar
-          MyAppBar(darkMode: darkMode),
+          SliverAppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Color(0xFFFFD5CD),
+            expandedHeight: 100,
+            floating: false,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Container(
+                color: Color(0xFFF9813A),
+              ),
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+            ),
+            title: Container(
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'H E L L O\nS T U D E N T',
+                        style: TextStyle(
+                          color: Color(0xFF1A1C20),
+                        ),
+                      ),
+                      CircleButton(
+                        icon: Icons.notifications,
+                        onPressed: () {},
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
 
           // Let's see some interested Meow
           SliverToBoxAdapter(
@@ -51,13 +86,125 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
 
-          // sliver items
-          SilverItem(),
-          SilverItem(),
-          SilverItem(),
-          SilverItem(),
-          SilverItem(),
-          SilverItem(),
+          // sliver items 1
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  height: 300,
+                  color: Color(0xFFFFD5CD),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Lottie.network(
+                          'https://lottie.host/01438a16-4ea9-4c98-be25-361e563b7478/gyor0EiwNn.json',
+                          height: 200,
+                          width: 200),
+                      Text(
+                        'Add some meow content...',
+                        style: TextStyle(
+                          color: Color(0xFFFCF1F1),
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          // sliver items 2
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  height: 300,
+                  color: Color(0xFFFFD5CD),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Lottie.network(
+                          'https://lottie.host/01438a16-4ea9-4c98-be25-361e563b7478/gyor0EiwNn.json',
+                          height: 200,
+                          width: 200),
+                      Text(
+                        'Add some meow content...',
+                        style: TextStyle(
+                          color: Color(0xFFFCF1F1),
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          // sliver items 3
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  height: 300,
+                  color: Color(0xFFFFD5CD),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Lottie.network(
+                          'https://lottie.host/01438a16-4ea9-4c98-be25-361e563b7478/gyor0EiwNn.json',
+                          height: 200,
+                          width: 200),
+                      Text(
+                        'Add some meow content...',
+                        style: TextStyle(
+                          color: Color(0xFFFCF1F1),
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          // sliver items 4
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  height: 300,
+                  color: Color(0xFFFFD5CD),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Lottie.network(
+                          'https://lottie.host/01438a16-4ea9-4c98-be25-361e563b7478/gyor0EiwNn.json',
+                          height: 200,
+                          width: 200),
+                      Text(
+                        'Add some meow content...',
+                        style: TextStyle(
+                          color: Color(0xFFFCF1F1),
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

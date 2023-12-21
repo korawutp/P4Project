@@ -128,6 +128,12 @@
       "languageVersion": "2.16"
     },
     {
+      "name": "graphs",
+      "rootUri": "file:///C:/Users/teeta/AppData/Local/Pub/Cache/hosted/pub.dev/graphs-2.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "html",
       "rootUri": "file:///C:/Users/teeta/AppData/Local/Pub/Cache/hosted/pub.dev/html-0.15.4",
       "packageUri": "lib/",
@@ -270,6 +276,18 @@
       "rootUri": "file:///C:/Users/teeta/AppData/Local/Pub/Cache/hosted/pub.dev/pointycastle-3.7.3",
       "packageUri": "lib/",
       "languageVersion": "2.14"
+    },
+    {
+      "name": "rive",
+      "rootUri": "file:///C:/Users/teeta/AppData/Local/Pub/Cache/hosted/pub.dev/rive-0.12.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "rive_common",
+      "rootUri": "file:///C:/Users/teeta/AppData/Local/Pub/Cache/hosted/pub.dev/rive_common-0.2.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "sky_engine",
@@ -422,7 +440,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2023-12-20T12:39:45.133098Z",
+  "generated": "2023-12-21T09:05:01.035300Z",
   "generator": "pub",
   "generatorVersion": "3.2.2"
 }
