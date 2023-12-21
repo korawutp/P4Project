@@ -30,6 +30,7 @@ dependencies:
   get: ^4.6.6
   get_storage: ^2.1.1
   lottie: ^2.7.0
+  rive: ^0.12.4
 
 
 # ------------------- DEV DEPENDENCIES ------------------- #
@@ -51,6 +52,7 @@ flutter:
     - assets/logos/
     - assets/icons/
     - assets/icons/navigation_menu/
+    - assets/icons/RiveAssets/
     - assets/images/
     - assets/images/onboarding_images/
     - assets/images/signup_images/

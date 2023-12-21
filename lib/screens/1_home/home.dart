@@ -8,6 +8,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: Color(0xFFFCF1F1),
       body: CustomScrollView(
         slivers: [
@@ -21,25 +22,30 @@ class HomeScreen extends StatelessWidget {
                 color: Color(0xFFF9813A),
               ),
             ),
-            title: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'H E L L O\nS T U D E N T',
-                      style: TextStyle(
-                        color: Color(0xFF1A1C20),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+            ),
+            title: Container(
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'H E L L O\nS T U D E N T',
+                        style: TextStyle(
+                          color: Color(0xFF1A1C20),
+                        ),
                       ),
-                    ),
-                    CircleButton(
-                      icon: Icons.notifications,
-                      onPressed: () {},
-                    )
-                  ],
-                ),
-              ],
+                      CircleButton(
+                        icon: Icons.notifications,
+                        onPressed: () {},
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
 
@@ -83,7 +89,7 @@ class HomeScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 child: Container(
                   height: 300,
-                  color: Color(0xFF1A1C20),
+                  color: Color(0xFFFFD5CD),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -113,7 +119,7 @@ class HomeScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 child: Container(
                   height: 300,
-                  color: Color(0xFF1A1C20),
+                  color: Color(0xFFFFD5CD),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -143,7 +149,7 @@ class HomeScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 child: Container(
                   height: 300,
-                  color: Color(0xFF1A1C20),
+                  color: Color(0xFFFFD5CD),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -173,7 +179,7 @@ class HomeScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 child: Container(
                   height: 300,
-                  color: Color(0xFF1A1C20),
+                  color: Color(0xFFFFD5CD),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
