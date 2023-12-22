@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workproject/utils/constants/colors.dart';
 
 /// Custom Class for Light and Dark Checkbox Theme
 class MyAppCheckboxTheme {
@@ -18,7 +19,7 @@ class MyAppCheckboxTheme {
     }),
     fillColor: MaterialStateProperty.resolveWith((states) {
       if (states.contains(MaterialState.selected)) {
-        return Colors.blue;
+        return MyAppColors.primary;
       } else {
         return Colors.transparent;
       }
@@ -39,7 +40,7 @@ class MyAppCheckboxTheme {
     }),
     fillColor: MaterialStateProperty.resolveWith((states) {
       if (states.contains(MaterialState.selected)) {
-        return Colors.blue;
+        return MyAppColors.primary;
       } else {
         return Colors.transparent;
       }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workproject/utils/constants/colors.dart';
 
 /// -- Custom Themes --
 import 'package:workproject/utils/theme/custom_themes/text_theme.dart';
@@ -18,7 +19,7 @@ class AppTheme {
     useMaterial3: true,
     fontFamily: 'Poppins',
     brightness: Brightness.light,
-    primaryColor: Colors.blue,
+    primaryColor: MyAppColors.primary,
     textTheme: MyAppTextTheme.lightTextTheme,
     chipTheme: MyAppChipTheme.lightChipTheme,
     scaffoldBackgroundColor: Colors.white,
@@ -35,7 +36,7 @@ class AppTheme {
     useMaterial3: true,
     fontFamily: 'Poppins',
     brightness: Brightness.dark,
-    primaryColor: Colors.blue,
+    primaryColor: MyAppColors.primary,
     textTheme: MyAppTextTheme.darkTextTheme,
     chipTheme: MyAppChipTheme.darkChipTheme,
     scaffoldBackgroundColor: Colors.black,
