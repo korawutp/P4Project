@@ -22,9 +22,6 @@ class HomeScreen extends StatelessWidget {
                 color: Color(0xFFF9813A),
               ),
             ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
-            ),
             title: Container(
               child: Column(
                 children: [
@@ -89,14 +86,15 @@ class HomeScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 child: Container(
                   height: 300,
-                  color: Color(0xFFFFD5CD),
+                  color: Color(0xFF1A1C20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Lottie.network(
-                          'https://lottie.host/01438a16-4ea9-4c98-be25-361e563b7478/gyor0EiwNn.json',
-                          height: 200,
-                          width: 200),
+                      Lottie.asset(
+                        'assets/images/home_images/meow_loading.json',
+                        height: 200,
+                        width: 200,
+                      ),
                       Text(
                         'Add some meow content...',
                         style: TextStyle(
@@ -119,12 +117,12 @@ class HomeScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 child: Container(
                   height: 300,
-                  color: Color(0xFFFFD5CD),
+                  color: Color(0xFF1A1C20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Lottie.network(
-                          'https://lottie.host/01438a16-4ea9-4c98-be25-361e563b7478/gyor0EiwNn.json',
+                      Lottie.asset(
+                          'assets/images/home_images/meow_loading.json',
                           height: 200,
                           width: 200),
                       Text(
@@ -149,12 +147,12 @@ class HomeScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 child: Container(
                   height: 300,
-                  color: Color(0xFFFFD5CD),
+                  color: Color(0xFF1A1C20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Lottie.network(
-                          'https://lottie.host/01438a16-4ea9-4c98-be25-361e563b7478/gyor0EiwNn.json',
+                      Lottie.asset(
+                          'assets/images/home_images/meow_loading.json',
                           height: 200,
                           width: 200),
                       Text(
@@ -179,12 +177,12 @@ class HomeScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 child: Container(
                   height: 300,
-                  color: Color(0xFFFFD5CD),
+                  color: Color(0xFF1A1C20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Lottie.network(
-                          'https://lottie.host/01438a16-4ea9-4c98-be25-361e563b7478/gyor0EiwNn.json',
+                      Lottie.asset(
+                          'assets/images/home_images/meow_loading.json',
                           height: 200,
                           width: 200),
                       Text(
