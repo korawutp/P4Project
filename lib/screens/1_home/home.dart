@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:workproject/screens/1_home/widgets/circle_button.dart';
+import 'package:workproject/screens/1_home/widgets/silver_item.dart';
+import 'package:workproject/utils/constants/colors.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -49,6 +50,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
 
+          // Let's see some interested Meow
           SliverToBoxAdapter(
             child: Column(
               children: [
@@ -62,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                         style: Theme.of(context)
                             .textTheme
                             .titleLarge
-                            ?.copyWith(color: Color(0xFF1A1C20)),
+                            ?.copyWith(color: MyAppColors.black),
                       ),
                       TextButton(
                         onPressed: () {},
@@ -71,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge
-                              ?.copyWith(color: Color(0xFFF9813A)),
+                              ?.copyWith(color: MyAppColors.primary),
                         ),
                       )
                     ],
@@ -82,124 +84,10 @@ class HomeScreen extends StatelessWidget {
           ),
 
           // sliver items 1
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Container(
-                  height: 300,
-                  color: Color(0xFFFFD5CD),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Lottie.network(
-                          'https://lottie.host/01438a16-4ea9-4c98-be25-361e563b7478/gyor0EiwNn.json',
-                          height: 200,
-                          width: 200),
-                      Text(
-                        'Add some meow content...',
-                        style: TextStyle(
-                          color: Color(0xFFFCF1F1),
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-
-          // sliver items 2
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Container(
-                  height: 300,
-                  color: Color(0xFFFFD5CD),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Lottie.network(
-                          'https://lottie.host/01438a16-4ea9-4c98-be25-361e563b7478/gyor0EiwNn.json',
-                          height: 200,
-                          width: 200),
-                      Text(
-                        'Add some meow content...',
-                        style: TextStyle(
-                          color: Color(0xFFFCF1F1),
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-
-          // sliver items 3
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Container(
-                  height: 300,
-                  color: Color(0xFFFFD5CD),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Lottie.network(
-                          'https://lottie.host/01438a16-4ea9-4c98-be25-361e563b7478/gyor0EiwNn.json',
-                          height: 200,
-                          width: 200),
-                      Text(
-                        'Add some meow content...',
-                        style: TextStyle(
-                          color: Color(0xFFFCF1F1),
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-
-          // sliver items 4
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Container(
-                  height: 300,
-                  color: Color(0xFFFFD5CD),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Lottie.network(
-                          'https://lottie.host/01438a16-4ea9-4c98-be25-361e563b7478/gyor0EiwNn.json',
-                          height: 200,
-                          width: 200),
-                      Text(
-                        'Add some meow content...',
-                        style: TextStyle(
-                          color: Color(0xFFFCF1F1),
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
+          SilverItem(),
+          SilverItem(),
+          SilverItem(),
+          SilverItem(),
         ],
       ),
     );

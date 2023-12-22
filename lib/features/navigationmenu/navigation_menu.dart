@@ -4,6 +4,8 @@ import 'package:workproject/components/animated_bar.dart';
 import 'package:workproject/models/rive_asset.dart';
 import 'package:workproject/screens/1_home/home.dart';
 import 'package:workproject/screens/2_classcheck/classcheck.dart';
+import 'package:workproject/screens/3_history/history.dart';
+import 'package:workproject/screens/4_profile/profile.dart';
 import 'package:workproject/utils/rive/rive_utils.dart';
 
 class NavigationMenu extends StatefulWidget {
@@ -18,8 +20,8 @@ class _NavBarState extends State<NavigationMenu> {
   final List<Widget> _pages = [
     HomeScreen(),
     Checkdrop(),
-    HomeScreen(),
-    Checkdrop(),
+    HistoryScreen(),
+    ProfileScreen(),
   ];
   RiveAsset selectedBottomNav = NavMenu.first;
   @override

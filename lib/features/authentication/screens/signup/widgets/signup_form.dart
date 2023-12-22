@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:workproject/common/widgets/login_signup/password_field.dart';
 import 'package:workproject/features/authentication/screens/signup/verify_email.dart';
 import 'package:workproject/features/authentication/screens/signup/widgets/terms_conditions_checkbox.dart';
 import 'package:workproject/utils/constants/sizes.dart';
@@ -69,14 +70,7 @@ class MyAppSignUpForm extends StatelessWidget {
           const SizedBox(height: MyAppSizes.spaceBtwInputFields),
 
           // Password
-          TextFormField(
-            obscureText: true,
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Iconsax.password_check),
-              labelText: MyAppText.password,
-              suffixIcon: Icon(Iconsax.eye_slash),
-            ),
-          ),
+          PasswordField(),
           const SizedBox(height: MyAppSizes.spaceBtwSections),
 
           // Terms & Conditions Checkbox

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:workproject/common/widgets/login_signup/password_field.dart';
 import 'package:workproject/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:workproject/features/authentication/screens/signup/signup.dart';
 import 'package:workproject/features/navigationmenu/navigation_menu.dart';
@@ -29,14 +30,7 @@ class MyAppLoginForm extends StatelessWidget {
             const SizedBox(height: MyAppSizes.spaceBtwInputFields),
 
             // Password
-            TextFormField(
-              decoration: InputDecoration(
-                prefixIcon: Icon(Iconsax.password_check),
-                labelText: MyAppText.password,
-                hintText: MyAppText.passwordHint,
-                suffixIcon: Icon(Iconsax.eye_slash),
-              ),
-            ),
+            PasswordField(),
             const SizedBox(height: MyAppSizes.spaceBtwInputFields / 2),
 
             // Remember Me and Forgot Password

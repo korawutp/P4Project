@@ -3,8 +3,7 @@ class MyAppImage {
   // Example:
 
   // -- App Logo
-  static const String darkAppLogo = 'assets/logos/logo_dark.png';
-  static const String lightAppLogo = 'assets/logos/logo_light.png';
+  static const String appLogo = 'assets/logos/app.png';
 
   // -- Social Logos
   static const String facebook = 'assets/icons/facebook.png';
@@ -40,9 +39,12 @@ class MyAppImage {
       'assets/icons/navigation_menu/history_dark.png';
   static const String historyLight =
       'assets/icons/navigation_menu/history_light.png';
-  static const String profile = 'assets/icons/navigation_menu/profile.png';
+  // static const String profile = 'assets/icons/navigation_menu/profile.png';
   static const String profileDark =
       'assets/icons/navigation_menu/profile_dark.png';
   static const String profileLight =
       'assets/icons/navigation_menu/profile_light.png';
+
+  // -- Profile Images
+  static const String profile = 'assets/images/profile.png';
 }
