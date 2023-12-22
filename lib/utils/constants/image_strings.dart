@@ -3,8 +3,7 @@ class MyAppImage {
   // Example:
 
   // -- App Logo
-  static const String darkAppLogo = 'assets/logos/logo_dark.png';
-  static const String lightAppLogo = 'assets/logos/logo_light.png';
+  static const String appLogo = 'assets/logos/app.png';
 
   // -- Social Logos
   static const String facebook = 'assets/icons/facebook.png';

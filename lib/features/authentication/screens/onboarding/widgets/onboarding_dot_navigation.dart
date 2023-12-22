@@ -4,7 +4,6 @@ import 'package:workproject/features/authentication/controllers/onboarding/onboa
 import 'package:workproject/utils/constants/colors.dart';
 import 'package:workproject/utils/constants/sizes.dart';
 import 'package:workproject/utils/device/device_utility.dart';
-import 'package:workproject/utils/helpers/helper_functions.dart';
 
 class OnBoardingDotNavigation extends StatelessWidget {
   const OnBoardingDotNavigation({super.key});
@@ -12,7 +11,6 @@ class OnBoardingDotNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = OnBoardingController.instance;
-    final dark = MyAppHelperFunctions.isDarkMode(context);
 
     return Positioned(
       bottom: MyAppDeviceUtility.getBottomNavigationBarHeight() + 25,
@@ -22,8 +20,7 @@ class OnBoardingDotNavigation extends StatelessWidget {
         controller: controller.pageController,
         // onDotClicked: controller.dotNavigationClick,
         effect: ExpandingDotsEffect(
-            activeDotColor: dark ? MyAppColors.light : MyAppColors.dark,
-            dotHeight: 6),
+            activeDotColor: MyAppColors.primary, dotHeight: 6),
       ),
     );
   }

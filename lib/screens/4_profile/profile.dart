@@ -11,7 +11,6 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final darkMode = MyAppHelperFunctions.isDarkMode(context);
 
     return Scaffold(
       body: CustomScrollView(
@@ -19,8 +18,7 @@ class ProfileScreen extends StatelessWidget {
           // Header
           SliverAppBar(
             automaticallyImplyLeading: false,
-            backgroundColor:
-                darkMode ? MyAppColors.tertiary : MyAppColors.secondary,
+            backgroundColor:MyAppColors.tertiary,
             expandedHeight: MyAppHelperFunctions.screenHeight() * 0.3,
             floating: false,
             flexibleSpace: FlexibleSpaceBar(

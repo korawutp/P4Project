@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:workproject/utils/constants/colors.dart';
 
 class SilverItem extends StatelessWidget {
   const SilverItem({
@@ -15,7 +16,7 @@ class SilverItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           child: Container(
             height: 300,
-            color: Color(0xFF1A1C20),
+            color: MyAppColors.tertiary,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -26,7 +27,7 @@ class SilverItem extends StatelessWidget {
                 Text(
                   'Add some meow content...',
                   style: TextStyle(
-                    color: Color(0xFFFCF1F1),
+                    color: MyAppColors.black,
                     fontSize: 20,
                   ),
                 ),

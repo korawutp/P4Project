@@ -4,9 +4,9 @@ class MyAppColors {
   MyAppColors._();
 
   // App Base Colors
-  static const Color primary = Color(0xFFFF6600);
+  static const Color primary = Color(0xFFF9813A);
   static const Color secondary = Color(0xFF5A5A5A);
-  static const Color tertiary = Color(0xFFFF9F5F);
+  static const Color tertiary = Color(0xFFFFD5CD);
 
   // Gradient Colors
   static const Gradient linerGradient = LinearGradient(

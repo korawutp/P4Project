@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workproject/utils/constants/colors.dart';
 
 /// -- Light & Dark Outlined Button Theme --
 class MyAppOutlinedButtonTheme {
@@ -9,7 +10,7 @@ class MyAppOutlinedButtonTheme {
     style: OutlinedButton.styleFrom(
       elevation: 0,
       foregroundColor: Colors.black,
-      side: const BorderSide(color: Colors.blue),
+      side: const BorderSide(color: MyAppColors.primary),
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
       textStyle: const TextStyle(
         fontSize: 16,
@@ -27,7 +28,7 @@ class MyAppOutlinedButtonTheme {
     style: OutlinedButton.styleFrom(
       elevation: 0,
       foregroundColor: Colors.white,
-      side: const BorderSide(color: Colors.blueAccent),
+      side: const BorderSide(color: MyAppColors.primary),
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
       textStyle: const TextStyle(
         fontSize: 16,
