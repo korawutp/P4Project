@@ -182,6 +182,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "liquid_pull_to_refresh",
+      "rootUri": "file:///C:/Users/koraw/AppData/Local/Pub/Cache/hosted/pub.dev/liquid_pull_to_refresh-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "logger",
       "rootUri": "file:///C:/Users/koraw/AppData/Local/Pub/Cache/hosted/pub.dev/logger-2.0.2+1",
       "packageUri": "lib/",
@@ -440,7 +446,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-01-10T14:33:37.228614Z",
+  "generated": "2024-01-10T14:35:11.566611Z",
   "generator": "pub",
   "generatorVersion": "3.2.2"
 }

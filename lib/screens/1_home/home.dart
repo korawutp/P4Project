@@ -1,93 +1,116 @@
 import 'package:flutter/material.dart';
-import 'package:workproject/screens/1_home/widgets/circle_button.dart';
-import 'package:workproject/screens/1_home/widgets/silver_item.dart';
-import 'package:workproject/utils/constants/colors.dart';
+import 'package:workproject/screens/1_home/widgets/home_days.dart';
+import 'package:workproject/screens/1_home/widgets/home_searchbar.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      backgroundColor: Color(0xFFFCF1F1),
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: Color(0xFFFFD5CD),
-            expandedHeight: 100,
-            floating: false,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Container(
-                color: Color(0xFFF9813A),
-              ),
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
-            ),
-            title: Container(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'H E L L O\nS T U D E N T',
-                        style: TextStyle(
-                          color: Color(0xFF1A1C20),
-                        ),
-                      ),
-                      CircleButton(
-                        icon: Icons.notifications,
-                        onPressed: () {},
-                      )
-                    ],
-                  ),
-                ],
-              ),
-            ),
+      backgroundColor: Colors.blue[800],
+      body: Column(
+        children: [
+          SizedBox(
+            height: 20,
           ),
-
-          // Let's see some interested Meow
-          SliverToBoxAdapter(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Let's see some interested Meow",
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge
-                            ?.copyWith(color: MyAppColors.black),
+                //* Hi Row
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    //* Hi User!
+                    Text(
+                      'Hello Student!',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
                       ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'See All',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge
-                              ?.copyWith(color: MyAppColors.primary),
+                    ),
+
+                    //* notification
+                    IconButton(
+                      onPressed: () {},
+                      style: IconButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                      )
-                    ],
-                  ),
-                )
+                        backgroundColor: Colors.blue[600],
+                        fixedSize: const Size(50, 50),
+                      ),
+                      icon: const Icon(
+                        Icons.notifications,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+
+                SizedBox(
+                  height: 20,
+                ),
+
+                //* search bar
+                HomeSearchBar(),
+
+                SizedBox(
+                  height: 20,
+                ),
+
+                //* mini history page
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'How was your class today?',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'See All',
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                              color: Color(0xFF1A1C20),
+                              fontSize: 12,
+                            ),
+                      ),
+                    )
+                  ],
+                ),
+
+                //* mini history
+                HomeDays(),
+
+                SizedBox(
+                  height: 20,
+                ),
               ],
             ),
           ),
-
-          // sliver items 1
-          SilverItem(),
-          SilverItem(),
-          SilverItem(),
-          SilverItem(),
+          Expanded(
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(50),
+                topRight: Radius.circular(50),
+              ),
+              child: Container(
+                color: Colors.white,
+              ),
+            ),
+          ),
         ],
       ),
     );

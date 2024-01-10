@@ -35,7 +35,7 @@ class _NavBarState extends State<NavigationMenu> {
           margin: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
           decoration: BoxDecoration(
             color: Colors.black87.withOpacity(0.8),
-            borderRadius: BorderRadius.all(Radius.circular(24)),
+            borderRadius: BorderRadius.all(Radius.circular(15)),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

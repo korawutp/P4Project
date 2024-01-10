@@ -31,6 +31,7 @@ dependencies:
   get_storage: ^2.1.1
   lottie: ^2.7.0
   rive: ^0.12.4
+  liquid_pull_to_refresh: ^3.0.1
 
 
 # ------------------- DEV DEPENDENCIES ------------------- #
@@ -51,11 +52,11 @@ flutter:
   assets:
     - assets/logos/
     - assets/icons/
-    - assets/icons/navigation_menu/
     - assets/icons/RiveAssets/
     - assets/images/
     - assets/images/onboarding_images/
     - assets/images/signup_images/
+    - assets/images/home_images/
     
 
 
