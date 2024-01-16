@@ -6,19 +6,20 @@ import 'package:workproject/utils/constants/colors.dart';
 import 'package:workproject/utils/constants/image_strings.dart';
 import 'package:workproject/utils/helpers/helper_functions.dart';
 
+import 'screens/edit_profile.dart';
+
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           // Header
           SliverAppBar(
             automaticallyImplyLeading: false,
-            backgroundColor:MyAppColors.tertiary,
+            backgroundColor: MyAppColors.tertiary,
             expandedHeight: MyAppHelperFunctions.screenHeight() * 0.3,
             floating: false,
             flexibleSpace: FlexibleSpaceBar(
@@ -33,9 +34,7 @@ class ProfileScreen extends StatelessWidget {
                         MyAppImage.profile,
                       ),
                     ),
-                    SizedBox(
-                        height:
-                            10), // Add some space between the avatar and text
+                    SizedBox(height: 10), // Add some space between the avatar and text
                     Text(
                       'John Doe', // Replace with the actual name
                       style: TextStyle(
@@ -70,13 +69,9 @@ class ProfileScreen extends StatelessWidget {
               [
                 // Profile Button
                 ListTile(
-                  leading: Icon(Iconsax.user_edit),
-                  title: Text('Edit Profile'),
-                  onTap: () {
-                    // Handle profile button tap
-                    // Navigate to profile screen or perform other actions
-                  },
-                ),
+                    leading: Icon(Iconsax.user_edit),
+                    title: Text('Edit Profile'),
+                    onTap: () => Get.to(() => const EditProfileScreen())),
 
                 // Settings Button
                 ListTile(

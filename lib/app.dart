@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:workproject/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:workproject/utils/theme/theme.dart';
+
+import 'features/authentication/screens/login/login.dart';
 
 /// -- Use this Class to set the themes, initial Binding, etc --
 class App extends StatelessWidget {
@@ -14,7 +15,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: AppTheme.lightTheme,
       // darkTheme: AppTheme.darkTheme,
-      home: const OnBoardingScreen(),
+      home: const LoginScreen(),
     );
   }
 }
