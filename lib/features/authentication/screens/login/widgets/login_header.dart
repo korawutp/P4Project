@@ -12,7 +12,7 @@ class MyAppLoginHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Image(
-          height: 100,
+          height: 150,
           image: AssetImage(MyAppImage.appLogo),
         ),
         Text(
