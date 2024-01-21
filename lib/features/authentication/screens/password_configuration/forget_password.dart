@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:workproject/features/authentication/screens/password_configuration/reset_password.dart';
+import 'package:workproject/features/authentication/controllers/forget_password/forget_password_controller.dart';
 import 'package:workproject/utils/constants/sizes.dart';
 import 'package:workproject/utils/constants/text_strings.dart';
+import 'package:workproject/utils/validators/validation.dart';
 
 class ForgetPassword extends StatelessWidget {
   const ForgetPassword({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ForgetPasswordController());
+    
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
@@ -17,11 +20,10 @@ class ForgetPassword extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Headline
+            // Headings
             Text(
               MyAppText.forgotPasswordTitle,
               style: Theme.of(context).textTheme.headlineMedium,
-              textAlign: TextAlign.center,
             ),
             const SizedBox(height: MyAppSizes.spaceBtwItems),
             Text(
@@ -32,10 +34,15 @@ class ForgetPassword extends StatelessWidget {
             const SizedBox(height: MyAppSizes.spaceBtwSections * 2),
 
             // TextFields
-            TextFormField(
-              decoration: const InputDecoration(
-                labelText: MyAppText.email,
-                prefixIcon: Icon(Iconsax.direct_right),
+            Form(
+              key: controller.forgetPasswordFormKey,
+              child: TextFormField(
+                controller: controller.email,
+                validator: MyAppValidator.validateEmail,
+                decoration: const InputDecoration(
+                  labelText: MyAppText.email,
+                  prefixIcon: Icon(Iconsax.direct_right),
+                ),
               ),
             ),
             const SizedBox(height: MyAppSizes.spaceBtwSections),
@@ -44,7 +51,7 @@ class ForgetPassword extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () => Get.off(() => const ResetPassword()),
+                onPressed: () => controller.sendPasswordResetEmail(),
                 child: const Text(MyAppText.submit),
               ),
             ),

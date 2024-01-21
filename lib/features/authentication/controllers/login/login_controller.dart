@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:workproject/data/repository/authentication/authentication_repository.dart';
-import 'package:workproject/features/personalization/controllers/user_controller.dart';
+import 'package:workproject/features/personalization/controllers/user_controller/user_controller.dart';
 import 'package:workproject/utils/constants/image_strings.dart';
 import 'package:workproject/utils/helpers/network_manager.dart';
 import 'package:workproject/utils/popups/full_screen_loader.dart';

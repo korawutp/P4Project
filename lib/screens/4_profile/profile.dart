@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:workproject/common/widgets/shimmer/shimmer.dart';
 import 'package:workproject/features/authentication/screens/login/login.dart';
+import 'package:workproject/features/personalization/controllers/user_controller/user_controller.dart';
+import 'package:workproject/features/personalization/screens/edit_profile/edit_profile.dart';
 import 'package:workproject/utils/constants/colors.dart';
 import 'package:workproject/utils/constants/image_strings.dart';
 import 'package:workproject/utils/helpers/helper_functions.dart';
-
-import 'screens/edit_profile.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(UserController());
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -35,21 +37,32 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 10), // Add some space between the avatar and text
-                    Text(
-                      'John Doe', // Replace with the actual name
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      'john.doe@example.com', // Replace with the actual email
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.white,
-                      ),
-                    ),
+                    Obx(() {
+                      if (controller.profileLoading.value) {
+                        // Display a shimmer effect loader while user profile is being loaded.
+                        return const MyAppShimmerEffect(width: 80, height: 15);
+                      } else {
+                        return Column(
+                          children: [
+                            Text(
+                              controller.user.value.fullName, // Replace with the actual name
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              controller.user.value.email, // Replace with the actual email
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        );
+                      }
+                    }),
                   ],
                 ),
               ),

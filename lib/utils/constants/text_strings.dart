@@ -62,6 +62,7 @@ class MyAppText {
       'Something went wrong? Don\'t worry, we will send you a link to reset your password. Please enter your email address below.';
   static const String submit = 'Submit';
   static const String done = 'Done';
-  static const String resetPasswordTitle = 'Reset Password';
-  static const String resetPasswordSubTitle = 'Please enter your new password below.';
+  static const String resetPasswordTitle = 'Password Reset Email Sent';
+  static const String resetPasswordSubTitle =
+      "Your account security is our priority! We've sent you a secure link to safely change your password and keep your account protected.";
 }

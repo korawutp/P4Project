@@ -36,7 +36,7 @@ class MyAppLoginForm extends StatelessWidget {
             // Password
             Obx(
               () => TextFormField(
-                validator: (value) => MyAppValidator.validatePassword(value),
+                validator: (value) => MyAppValidator.validationEmptyText('Password', value),
                 controller: controller.password,
                 obscureText: controller.hidePassword.value,
                 decoration: InputDecoration(
