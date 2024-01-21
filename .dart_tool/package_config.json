@@ -92,6 +92,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "flutter_heatmap_calendar",
+      "rootUri": "file:///C:/Users/teeta/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_heatmap_calendar-1.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_lints",
       "rootUri": "file:///C:/Users/teeta/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_lints-3.0.1",
       "packageUri": "lib/",
@@ -446,7 +452,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-01-21T11:12:12.518054Z",
+  "generated": "2024-01-21T11:14:35.953848Z",
   "generator": "pub",
   "generatorVersion": "3.2.2"
 }
