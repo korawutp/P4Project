@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:workproject/common/widgets/shimmer/shimmer.dart';
 import 'package:workproject/features/authentication/screens/login/login.dart';
+import 'package:workproject/features/personalization/controllers/user_controller/user_controller.dart';
+import 'package:workproject/features/personalization/screens/edit_profile/edit_profile.dart';
 import 'package:workproject/utils/constants/colors.dart';
 import 'package:workproject/utils/constants/image_strings.dart';
 import 'package:workproject/utils/helpers/helper_functions.dart';
@@ -11,14 +14,14 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    final controller = Get.put(UserController());
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           // Header
           SliverAppBar(
             automaticallyImplyLeading: false,
-            backgroundColor:MyAppColors.tertiary,
+            backgroundColor: MyAppColors.tertiary,
             expandedHeight: MyAppHelperFunctions.screenHeight() * 0.3,
             floating: false,
             flexibleSpace: FlexibleSpaceBar(
@@ -33,24 +36,33 @@ class ProfileScreen extends StatelessWidget {
                         MyAppImage.profile,
                       ),
                     ),
-                    SizedBox(
-                        height:
-                            10), // Add some space between the avatar and text
-                    Text(
-                      'John Doe', // Replace with the actual name
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      'john.doe@example.com', // Replace with the actual email
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.white,
-                      ),
-                    ),
+                    SizedBox(height: 10), // Add some space between the avatar and text
+                    Obx(() {
+                      if (controller.profileLoading.value) {
+                        // Display a shimmer effect loader while user profile is being loaded.
+                        return const MyAppShimmerEffect(width: 80, height: 15);
+                      } else {
+                        return Column(
+                          children: [
+                            Text(
+                              controller.user.value.fullName, // Replace with the actual name
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              controller.user.value.email, // Replace with the actual email
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        );
+                      }
+                    }),
                   ],
                 ),
               ),
@@ -70,13 +82,9 @@ class ProfileScreen extends StatelessWidget {
               [
                 // Profile Button
                 ListTile(
-                  leading: Icon(Iconsax.user_edit),
-                  title: Text('Edit Profile'),
-                  onTap: () {
-                    // Handle profile button tap
-                    // Navigate to profile screen or perform other actions
-                  },
-                ),
+                    leading: Icon(Iconsax.user_edit),
+                    title: Text('Edit Profile'),
+                    onTap: () => Get.to(() => const EditProfileScreen())),
 
                 // Settings Button
                 ListTile(

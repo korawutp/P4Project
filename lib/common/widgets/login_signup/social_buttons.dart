@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:workproject/features/authentication/controllers/login/login_controller.dart';
 import 'package:workproject/utils/constants/colors.dart';
 import 'package:workproject/utils/constants/image_strings.dart';
 import 'package:workproject/utils/constants/sizes.dart';
@@ -8,15 +10,16 @@ class MyAppSocialButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          decoration: BoxDecoration(
-              border: Border.all(color: MyAppColors.grey),
-              borderRadius: BorderRadius.circular(100)),
+          decoration:
+              BoxDecoration(border: Border.all(color: MyAppColors.grey), borderRadius: BorderRadius.circular(100)),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () => controller.googleSignIn(),
             icon: const Image(
               width: MyAppSizes.iconMd,
               height: MyAppSizes.iconMd,
@@ -26,9 +29,8 @@ class MyAppSocialButtons extends StatelessWidget {
         ),
         const SizedBox(width: MyAppSizes.spaceBtwItems),
         Container(
-          decoration: BoxDecoration(
-              border: Border.all(color: MyAppColors.grey),
-              borderRadius: BorderRadius.circular(100)),
+          decoration:
+              BoxDecoration(border: Border.all(color: MyAppColors.grey), borderRadius: BorderRadius.circular(100)),
           child: IconButton(
             onPressed: () {},
             icon: const Image(
