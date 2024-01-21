@@ -9,16 +9,16 @@ class HomeSearchBar extends StatelessWidget {
       decoration: InputDecoration(
         prefixIcon: const Icon(
           Icons.search,
-          color: Colors.white,
+          color: Color(0xFF1A1C20),
           size: 24,
         ),
         floatingLabelBehavior: FloatingLabelBehavior.never,
         labelText: "Search your classes",
         labelStyle: const TextStyle(
-          color: Colors.white70,
+          color: Color(0xFFFFD5CD),
         ),
         filled: true,
-        fillColor: Colors.blue[600],
+        fillColor: Color(0xFFFCF1F1),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
         ),

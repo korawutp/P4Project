@@ -1,6 +1,11 @@
+//! popupnotification
+//! touchable mini_history
+
 import 'package:flutter/material.dart';
+import 'package:workproject/screens/1_home/widgets/home_classtile.dart';
 import 'package:workproject/screens/1_home/widgets/home_days.dart';
 import 'package:workproject/screens/1_home/widgets/home_searchbar.dart';
+import 'package:workproject/screens/3_history/history.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[800],
+      backgroundColor: Color(0xFFF9813A),
       body: Column(
         children: [
           SizedBox(
@@ -31,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text(
                       'Hello Student!',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Color(0xFFFCF1F1),
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
@@ -44,12 +49,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        backgroundColor: Colors.blue[600],
+                        backgroundColor: Color(0xFFFCF1F1),
                         fixedSize: const Size(50, 50),
                       ),
                       icon: const Icon(
                         Icons.notifications,
-                        color: Colors.white,
+                        color: Color(0xFF1A1C20),
                       ),
                     ),
                   ],
@@ -73,13 +78,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text(
                       'How was your class today?',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Color(0xFFFCF1F1),
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HistoryScreen()));
+                      },
                       child: Text(
                         'See All',
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
@@ -107,7 +117,66 @@ class _HomeScreenState extends State<HomeScreen> {
                 topRight: Radius.circular(50),
               ),
               child: Container(
-                color: Colors.white,
+                padding: EdgeInsets.all(20),
+                color: Color(0xFF1A1C20),
+                child: Center(
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Let's see your enrolled class",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Color(0xFFFCF1F1),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Expanded(
+                        child: ListView(
+                          children: [
+                            HomeClasstile(
+                              icon: Icons.class_,
+                              classNumber: '305491',
+                              className: 'Computer Engineering...',
+                              color: Colors.orange,
+                            ),
+                            HomeClasstile(
+                              icon: Icons.class_,
+                              classNumber: '305492',
+                              className: 'Computer Engineering...',
+                              color: Colors.blue,
+                            ),
+                            HomeClasstile(
+                              icon: Icons.class_,
+                              classNumber: '000000',
+                              className: 'Classname',
+                              color: Colors.green,
+                            ),
+                            HomeClasstile(
+                              icon: Icons.class_,
+                              classNumber: '111111',
+                              className: 'Classname',
+                              color: Colors.pink,
+                            ),
+                            HomeClasstile(
+                              icon: Icons.class_,
+                              classNumber: '222222',
+                              className: 'Classname',
+                              color: Colors.purple,
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
             ),
           ),

@@ -19,7 +19,7 @@ class HomeDays extends StatelessWidget {
             Text(
               'Sun',
               style: TextStyle(
-                color: Colors.white,
+                color: Color(0xFFFCF1F1),
               ),
             )
           ],
@@ -35,7 +35,7 @@ class HomeDays extends StatelessWidget {
             Text(
               'Mon',
               style: TextStyle(
-                color: Colors.white,
+                color: Color(0xFFFCF1F1),
               ),
             )
           ],
@@ -51,7 +51,7 @@ class HomeDays extends StatelessWidget {
             Text(
               'Tue',
               style: TextStyle(
-                color: Colors.white,
+                color: Color(0xFFFCF1F1),
               ),
             )
           ],
@@ -67,7 +67,7 @@ class HomeDays extends StatelessWidget {
             Text(
               'Wed',
               style: TextStyle(
-                color: Colors.white,
+                color: Color(0xFFFCF1F1),
               ),
             )
           ],
@@ -83,7 +83,7 @@ class HomeDays extends StatelessWidget {
             Text(
               'Thu',
               style: TextStyle(
-                color: Colors.white,
+                color: Color(0xFFFCF1F1),
               ),
             )
           ],
@@ -99,7 +99,7 @@ class HomeDays extends StatelessWidget {
             Text(
               'Fri',
               style: TextStyle(
-                color: Colors.white,
+                color: Color(0xFFFCF1F1),
               ),
             )
           ],
@@ -115,7 +115,7 @@ class HomeDays extends StatelessWidget {
             Text(
               'Sat',
               style: TextStyle(
-                color: Colors.white,
+                color: Color(0xFFFCF1F1),
               ),
             )
           ],
