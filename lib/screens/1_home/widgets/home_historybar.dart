@@ -8,7 +8,7 @@ class Historybar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.black,
+        color: Color(0xFFFFD5CD),
         borderRadius: BorderRadius.circular(12),
       ),
       padding: EdgeInsets.all(6),
