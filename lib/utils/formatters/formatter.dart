@@ -13,7 +13,7 @@ class MyAppFormatter {
   static String formatPhoneNumber(String phoneNumber) {
     // Assume a 10-digit Thai phone number format: 081-234-5678
     if (phoneNumber.length == 10) {
-      return '${phoneNumber.substring(0, 3)}-${phoneNumber.substring(3, 6)}-${phoneNumber.substring(6, 10)}';
+      return '+66 ${phoneNumber.substring(1)} ${phoneNumber.substring(2, 6)} ${phoneNumber.substring(6, 10)}';
     } else {
       return phoneNumber;
     }

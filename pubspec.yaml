@@ -15,10 +15,14 @@ dependencies:
     sdk: flutter
 
   # Utilitiy Packages
-  http: ^1.1.2
+  http: ^1.2.0
   intl: ^0.19.0
   logger: ^2.0.2
+  lottie: ^3.0.0
+  shimmer: ^3.0.0
+  image_picker: ^1.0.7
   url_launcher: ^6.2.2
+  connectivity_plus: ^5.0.2
   flutter_native_splash: ^2.3.8
   smooth_page_indicator: ^1.1.0
 
@@ -29,9 +33,16 @@ dependencies:
   # State Management
   get: ^4.6.6
   get_storage: ^2.1.1
-  lottie: ^2.7.0
   rive: ^0.12.4
   liquid_pull_to_refresh: ^3.0.1
+  flutter_heatmap_calendar: ^1.0.5
+
+  # Firebase
+  firebase_core: ^2.24.2
+  firebase_auth: ^4.16.0
+  cloud_firestore: ^4.14.0
+  google_sign_in: ^6.2.1
+  firebase_storage: ^11.6.0
 
 
 # ------------------- DEV DEPENDENCIES ------------------- #
@@ -57,6 +68,7 @@ flutter:
     - assets/images/onboarding_images/
     - assets/images/signup_images/
     - assets/images/home_images/
+    - assets/images/animations/
     
 
 

@@ -6,11 +6,7 @@ import 'package:workproject/utils/helpers/helper_functions.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen(
-      {super.key,
-      required this.image,
-      required this.title,
-      required this.subTitle,
-      required this.onPressed});
+      {super.key, required this.image, required this.title, required this.subTitle, required this.onPressed});
 
   final String image, title, subTitle;
   final VoidCallback onPressed;
@@ -18,6 +14,9 @@ class SuccessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+      ),
       body: SingleChildScrollView(
           child: Padding(
         padding: MyAppSpacingStyle.paddingWithAppBarHeight * 2,
