@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:workproject/screens/1_home/widgets/home_classtile.dart';
 import 'package:workproject/screens/1_home/widgets/home_days.dart';
 import 'package:workproject/screens/1_home/widgets/home_searchbar.dart';
-import 'package:workproject/screens/3_history/history.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -83,22 +82,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HistoryScreen()));
-                      },
-                      child: Text(
-                        'See All',
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                              color: Color(0xFF1A1C20),
-                              fontSize: 12,
-                            ),
-                      ),
-                    )
                   ],
+                ),
+
+                SizedBox(
+                  height: 10,
                 ),
 
                 //* mini history
