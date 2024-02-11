@@ -66,7 +66,7 @@ class CourseModel {
       wifiBroadcast: data['WifiBroadcast'] ?? '',
       wifiGateway: data['WifiGateway'] ?? '',
       createdAt: (data['CreatedAt'] as Timestamp).toDate(), // แปลง Timestamp เป็น DateTime
-      createdBy: data['CreatedBy'] ?? '',
+      createdBy: data['CreateBy'] ?? '',
     );
   }
 }
