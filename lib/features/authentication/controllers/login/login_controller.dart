@@ -49,6 +49,11 @@ class LoginController extends GetxController {
       if (rememberMe.value) {
         localStorage.write('REMEMBER_ME_EMAIL', email.text.trim());
         localStorage.write('REMEMBER_ME_PASSWORD', password.text.trim());
+      } else {
+        if (localStorage.read('REMEMBER_ME_EMAIL') != null) {
+          localStorage.write('REMEMBER_ME_EMAIL', '');
+          localStorage.write('REMEMBER_ME_PASSWORD', '');
+        }
       }
 
       // Login user using email & password authentication
@@ -57,7 +62,7 @@ class LoginController extends GetxController {
 
       // Save User Record
       await userController.saveUserRecord(userCredentials);
-      
+
       // Remove Loader
       MyAppFullScreenLoader.stopLoading();
 

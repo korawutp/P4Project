@@ -18,6 +18,7 @@ class ChangeName extends StatelessWidget {
         title: Text(
           'Change Name',
           style: Theme.of(context).textTheme.headlineSmall,
+        
         ),
       ),
       body: Padding(

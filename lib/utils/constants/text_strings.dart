@@ -43,6 +43,7 @@ class MyAppText {
   static const String firstName = 'First Name';
   static const String lastName = 'Last Name';
   static const String username = 'Username';
+  static const String studentID = 'Student ID';
   static const String phoneNo = 'Phone Number';
   static const String iAgreeTo = 'I agree to';
   static const String privacyPolicy = 'Privacy Policy';
@@ -65,4 +66,6 @@ class MyAppText {
   static const String resetPasswordTitle = 'Password Reset Email Sent';
   static const String resetPasswordSubTitle =
       "Your account security is our priority! We've sent you a secure link to safely change your password and keep your account protected.";
+  static const String courseName = 'Course Name';
+  static const String duration  = 'Duration';
 }

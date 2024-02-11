@@ -47,5 +47,13 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<false/>
+
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>Need location access to get WiFi details</string>
+		<key>NSLocationAlwaysUsageDescription</key>
+		<string>Need location access to get WiFi details</string>
+
+
+
 	</dict>
 </plist>

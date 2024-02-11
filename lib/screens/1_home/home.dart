@@ -2,10 +2,14 @@
 //! touchable mini_history
 
 import 'package:flutter/material.dart';
+import 'package:workproject/common/widgets/shimmer/shimmer.dart';
 import 'package:workproject/screens/1_home/widgets/home_classtile.dart';
 import 'package:workproject/screens/1_home/widgets/home_days.dart';
 import 'package:workproject/screens/1_home/widgets/home_searchbar.dart';
 import 'package:workproject/screens/3_history/history.dart';
+
+import 'package:get/get.dart';
+import 'package:workproject/features/personalization/controllers/user_controller/user_controller.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,6 +21,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(UserController());
     return Scaffold(
       backgroundColor: Color(0xFFF9813A),
       body: Column(
@@ -29,36 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               children: [
                 //* Hi Row
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    //* Hi User!
-                    Text(
-                      'Hello Student!',
-                      style: TextStyle(
-                        color: Color(0xFFFCF1F1),
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-
-                    //* notification
-                    IconButton(
-                      onPressed: () {},
-                      style: IconButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        backgroundColor: Color(0xFFFCF1F1),
-                        fixedSize: const Size(50, 50),
-                      ),
-                      icon: const Icon(
-                        Icons.notifications,
-                        color: Color(0xFF1A1C20),
-                      ),
-                    ),
-                  ],
-                ),
+                _buildGreetingRow(controller),
 
                 SizedBox(
                   height: 20,
@@ -85,10 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HistoryScreen()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => HistoryScreen()));
                       },
                       child: Text(
                         'See All',
@@ -182,6 +155,42 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  //* Hi Row แสดงชื่อ
+  Row _buildGreetingRow(UserController controller) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Obx(
+          () {
+            if (controller.profileLoading.value) {
+              return const MyAppShimmerEffect(width: 80, height: 15);
+            } else {
+              return Text(
+                'Hello ${controller.user.value.firstName} !',
+                style: const TextStyle(
+                  color: Color(0xFFFCF1F1),
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              );
+            }
+          },
+        ),
+        IconButton(
+          onPressed: () {},
+          style: IconButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            backgroundColor: Color(0xFFFCF1F1),
+            fixedSize: const Size(50, 50),
+          ),
+          icon: const Icon(Icons.notifications, color: Color(0xFF1A1C20)),
+        ),
+      ],
     );
   }
 }

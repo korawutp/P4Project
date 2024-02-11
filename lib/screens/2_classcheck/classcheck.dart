@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+
 //* first page when don't have events or nothing to check
 
 class Checkdrop extends StatelessWidget {
@@ -8,6 +9,7 @@ class Checkdrop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Color(0xFFFCF1F1),
       body: Center(
