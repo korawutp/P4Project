@@ -3,7 +3,7 @@ import 'package:rive/rive.dart';
 import 'package:workproject/components/animated_bar.dart';
 import 'package:workproject/models/rive_asset.dart';
 import 'package:workproject/screens/1_home/home.dart';
-import 'package:workproject/screens/2_classcheck/classcheck.dart';
+import 'package:workproject/screens/2_classcheck/widgets/classcheck_event.dart';
 import 'package:workproject/screens/3_history/history.dart';
 import 'package:workproject/screens/4_profile/profile.dart';
 import 'package:workproject/utils/rive/rive_utils.dart';
@@ -19,7 +19,7 @@ class _NavBarState extends State<NavigationMenu> {
   int _selectedIndex = 0;
   final List<Widget> _pages = [
     HomeScreen(),
-    Checkdrop(),
+    Classevent(),
     HistoryScreen(),
     ProfileScreen(),
   ];
@@ -35,7 +35,7 @@ class _NavBarState extends State<NavigationMenu> {
           margin: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
           decoration: BoxDecoration(
             color: Colors.black87.withOpacity(0.8),
-            borderRadius: BorderRadius.all(Radius.circular(15)),
+            borderRadius: BorderRadius.all(Radius.circular(12)),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
