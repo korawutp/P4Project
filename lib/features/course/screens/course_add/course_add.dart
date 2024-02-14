@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -18,11 +19,14 @@ class CourseAddScreen extends StatelessWidget {
     return Scaffold(
       /// Custom Appbar
       appBar: AppBar(
-        title: Text(
-          'Add New Course',
-          style: Theme.of(context).textTheme.headlineSmall,
-        ),
-      ),
+          title: Text(
+            'Add New Course',
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
+          automaticallyImplyLeading: false,
+          actions: [
+            IconButton(onPressed: () => Get.close(1), icon: const Icon(CupertinoIcons.clear)),
+          ]),
       body: Padding(
         padding: const EdgeInsets.all(MyAppSizes.defaultSpace),
         child: Column(

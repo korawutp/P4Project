@@ -27,26 +27,6 @@ class CourseRepository extends GetxController {
     }
   }
 
-  /// Function to fetch course details based on user ID.
-  Future<CourseModel> fetchCourseDetails() async {
-    try {
-      final documentSnapshot = await _db.collection("Courses").doc().get();
-      if (documentSnapshot.exists) {
-        return CourseModel.fromSnapshot(documentSnapshot);
-      } else {
-        return CourseModel.empty();
-      }
-    } on FirebaseException catch (e) {
-      throw MyAppFirebaseException(e.code).message;
-    } on FormatException catch (_) {
-      throw const MyAppFormatException();
-    } on PlatformException catch (e) {
-      throw MyAppPlatformException(e.code).message;
-    } catch (e) {
-      throw 'Something went wrong. Please try again';
-    }
-  }
-  
   /// Function to fetch a list of course details.
   Future<List<CourseModel>> fetchCourseList() async {
     try {

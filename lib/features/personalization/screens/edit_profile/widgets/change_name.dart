@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -15,12 +16,15 @@ class ChangeName extends StatelessWidget {
     return Scaffold(
       /// Custom Appbar
       appBar: AppBar(
-        title: Text(
-          'Change Name',
-          style: Theme.of(context).textTheme.headlineSmall,
-        
-        ),
-      ),
+          title: Text(
+            'Change Name',
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
+          automaticallyImplyLeading: false,
+          actions: [
+            IconButton(onPressed: () => Get.close(1), icon: const Icon(CupertinoIcons.clear)),
+          ]),
+
       body: Padding(
         padding: const EdgeInsets.all(MyAppSizes.defaultSpace),
         child: Column(

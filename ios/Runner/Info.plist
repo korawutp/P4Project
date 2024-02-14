@@ -49,9 +49,10 @@
 		<false/>
 
 		<key>NSLocationWhenInUseUsageDescription</key>
-		<string>Need location access to get WiFi details</string>
+		<string>We need your location for connecting to the correct WiFi</string>
 		<key>NSLocationAlwaysUsageDescription</key>
-		<string>Need location access to get WiFi details</string>
+		<string>We need your location for connecting to the correct WiFi</string>
+
 
 
 

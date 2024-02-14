@@ -4,6 +4,8 @@ import 'package:network_info_plus/network_info_plus.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:workproject/data/repository/course/course_repository.dart';
 import 'package:workproject/features/course/models/course_model.dart';
+import 'package:workproject/utils/permission_handler/permission_handler.dart';
+import 'package:workproject/utils/popups/loaders.dart';
 
 class CourseController extends GetxController {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
@@ -15,9 +17,12 @@ class CourseController extends GetxController {
   final courseName = TextEditingController();
   final courseRepository = Get.put(CourseRepository());
 
+  var courseStatuses = <String, RxString>{}.obs;
+
   @override
   void onInit() {
     super.onInit();
+    requestLocationPermission();
     fetchCoursesList();
   }
 
@@ -34,47 +39,77 @@ class CourseController extends GetxController {
     }
   }
 
-  Future<Map<String, String?>> getCurrentNetworkInfo() async {
-    final info = NetworkInfo();
-    var wifiBSSID = await info.getWifiBSSID();
-    var wifiIP = await info.getWifiIP();
-    return {'bssid': wifiBSSID, 'ip': wifiIP};
+  void attemptToAccessCourse(String courseId) async {
+    Get.close(1);
+    bool canAccess = await canAccessCourse(courseId);
+    if (canAccess) {
+      // อนุญาตให้เข้าถึงหรือเช็คชื่อ
+      updateCourseStatus(courseId, 'Checked'); // อัปเดตสถานะเป็น 'Checked'
+      MyAppLoader.successSnackBar(title: 'Success', message: 'Have a great day!');
+    } else {
+      MyAppLoader.errorSnackBar(
+          title: 'Access Denied',
+          message: "You must be connected to the same WiFi as the instructor to access this course.");
+    }
   }
 
-  bool isIPInRange(String? ip, String rangePrefix) {
-    // Simple check: This function needs to be adjusted based on your IP range checking logic
-    return ip?.startsWith(rangePrefix) ?? false;
+  Future<bool> canAccessCourse(String courseId) async {
+    final info = NetworkInfo();
+    final wifiSSID = await info.getWifiName(); // SSID ที่เชื่อมต่ออยู่
+    final wifiSubmask = await info.getWifiSubmask(); // Submask
+
+    final doc = await _db.collection('Courses').doc(courseId).get();
+
+    if (doc.exists && wifiSSID != null && wifiSubmask != null) {
+      final courseWifiSSID = doc.data()?['WifiSSID'];
+      final courseWifiSubmask = doc.data()?['WifiSubmask'];
+      return courseWifiSSID == wifiSSID && courseWifiSubmask == wifiSubmask;
+    } else {
+      MyAppLoader.errorSnackBar(
+          title: 'Warning', message: "Cannot access WiFi data. Make sure you are connected to WiFi.");
+      return false;
+    }
   }
 
   Future<void> addCourse(String createdBy) async {
     final info = NetworkInfo();
-    final wifiBSSID = await info.getWifiBSSID(); // 11:22:33:44:55:66
-    final wifiIP = await info.getWifiIP(); // 192.168.1.43
-    final wifiIPv6 = await info.getWifiIPv6(); // 2001:0db8:85a3:0000:0000:8a2e:0370:7334
-    final wifiSubmask = await info.getWifiSubmask(); // 255.255.255.0
-    final wifiBroadcast = await info.getWifiBroadcast(); // 192.168.1.255
-    final wifiGateway = await info.getWifiGatewayIP(); // 192.168.1.1
+    final wifiSSID = await info.getWifiName(); // SSID : MyWifi
+    final wifiSubmask = await info.getWifiSubmask(); // Submask : 255.255.255.0
 
-    // ตรวจสอบค่า null
-    if (wifiIP == null || wifiBSSID == null) {
-      print('ไม่สามารถเข้าถึงข้อมูล WiFi ได้');
+    if (wifiSSID == null || wifiSubmask == null) {
+      MyAppLoader.errorSnackBar(
+          title: 'Warning', message: "Cannot access WiFi data. Make sure you are connected to WiFi.");
       return;
     }
 
-    // บันทึกข้อมูลห้องเรียนพร้อมข้อมูล WiFi ลงใน Firestore
     await _db.collection('Courses').add({
       'CourseName': courseName.text.trim(),
-      'WifiBSSID': wifiBSSID,
-      'WifiIP': wifiIP,
-      'WifiIPv6': wifiIPv6,
+      'WifiSSID': wifiSSID,
       'WifiSubmask': wifiSubmask,
-      'WifiBroadcast': wifiBroadcast,
-      'WifiGateway': wifiGateway,
       'CreatedAt': Timestamp.now(),
-      'CreateBy': createdBy,
+      'CreatedBy': createdBy,
     });
-
-    // หลังจากเพิ่มข้อมูลหลักสูตรใหม่ อาจต้องการเรียก fetchCourses อีกครั้งเพื่ออัปเดต UI
+    Get.close(1);
     fetchCoursesList();
+  }
+
+  Future<void> printWifiInfo() async {
+    final info = NetworkInfo();
+    final wifiSSID = await info.getWifiName(); // SSID
+    final wifiSubmask = await info.getWifiSubmask(); // Submask
+    print(wifiSSID);
+    print(wifiSubmask);
+  }
+
+  void updateCourseStatus(String id, String newStatus) {
+    if (courseStatuses.containsKey(id)) {
+      courseStatuses[id]!.value = newStatus;
+    } else {
+      courseStatuses[id] = RxString(newStatus);
+    }
+  }
+
+  String getCourseStatus(String id) {
+    return courseStatuses.containsKey(id) ? courseStatuses[id]!.value : 'Available';
   }
 }
