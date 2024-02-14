@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:workproject/components/animated_bar.dart';
+import 'package:workproject/features/course/screens/course/course.dart';
 import 'package:workproject/models/rive_asset.dart';
 import 'package:workproject/screens/1_home/home.dart';
-import 'package:workproject/screens/2_classcheck/widgets/classcheck_event.dart';
 import 'package:workproject/screens/3_history/history.dart';
 import 'package:workproject/screens/4_profile/profile.dart';
 import 'package:workproject/utils/rive/rive_utils.dart';
@@ -19,7 +19,7 @@ class _NavBarState extends State<NavigationMenu> {
   int _selectedIndex = 0;
   final List<Widget> _pages = [
     HomeScreen(),
-    Classevent(),
+    CourseScreen(),
     HistoryScreen(),
     ProfileScreen(),
   ];
@@ -58,23 +58,17 @@ class _NavBarState extends State<NavigationMenu> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      AnimatedBar(
-                          isActive: NavMenu[index] == selectedBottomNav),
+                      AnimatedBar(isActive: NavMenu[index] == selectedBottomNav),
                       SizedBox(
                         height: 36,
                         width: 36,
                         child: Opacity(
-                          opacity:
-                              NavMenu[index] == selectedBottomNav ? 1 : 0.5,
-                          child: RiveAnimation.asset(NavMenu.first.src,
-                              artboard: NavMenu[index].artboard,
+                          opacity: NavMenu[index] == selectedBottomNav ? 1 : 0.5,
+                          child: RiveAnimation.asset(NavMenu.first.src, artboard: NavMenu[index].artboard,
                               onInit: (artboard) {
-                            StateMachineController controller =
-                                RiveUtils.getRiveController(artboard,
-                                    StateMachineName:
-                                        NavMenu[index].stateMachineName);
-                            NavMenu[index].input =
-                                controller.findSMI("active") as SMIBool;
+                            StateMachineController controller = RiveUtils.getRiveController(artboard,
+                                StateMachineName: NavMenu[index].stateMachineName);
+                            NavMenu[index].input = controller.findSMI("active") as SMIBool;
                           }),
                         ),
                       ),

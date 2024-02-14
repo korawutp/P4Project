@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:workproject/data/repository/authentication/authentication_repository.dart';
 import 'package:workproject/data/repository/user/user_repository.dart';
 import 'package:workproject/features/authentication/screens/login/login.dart';
@@ -19,6 +20,7 @@ class UserController extends GetxController {
   Rx<UserModel> user = UserModel.empty().obs;
 
   final hidePassword = false.obs;
+  final imageUploading = false.obs;
   final verifyEmail = TextEditingController();
   final verifyPassword = TextEditingController();
   final userRepository = Get.put(UserRepository());
@@ -54,14 +56,15 @@ class UserController extends GetxController {
         if (userCredentials != null) {
           // Convert Name to First and Last Name
           final nameParts = UserModel.nameParts(userCredentials.user!.displayName ?? '');
-          final username = UserModel.generateUsername(userCredentials.user!.displayName ?? '');
+          // final username = UserModel.generateUsername(userCredentials.user!.displayName ?? '');
 
           // Map Data
           final user = UserModel(
             id: userCredentials.user!.uid,
             firstName: nameParts[0],
             lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
-            userName: username,
+            // userName: username,
+            studentID: '',
             email: userCredentials.user!.email ?? '',
             phoneNumber: userCredentials.user!.phoneNumber ?? '',
             profilePicture: userCredentials.user!.photoURL ?? '',
@@ -75,6 +78,20 @@ class UserController extends GetxController {
       MyAppLoader.warningSnackBar(
           title: 'Data not saved',
           message: 'Something went wrong while saving your information. You can re-save your data in your Profile.');
+    }
+  }
+
+  /// Logout account
+  Future<void> logoutAccount() async {
+    try {
+      MyAppFullScreenLoader.openLoadingDialog('Processing...', MyAppImage.loadingAnimation);
+      final auth = AuthenticationRepository.instance;
+      await auth.logout();
+      MyAppFullScreenLoader.stopLoading();
+      Get.offAll(() => const LoginScreen());
+    } catch (e) {
+      MyAppFullScreenLoader.stopLoading();
+      MyAppLoader.warningSnackBar(title: 'Warning!', message: e.toString());
     }
   }
 
@@ -159,6 +176,25 @@ class UserController extends GetxController {
 
   /// Upload Profile Image
   uploadUserProfilePicture() async {
-    
+    try {
+      final image =
+          await ImagePicker().pickImage(source: ImageSource.gallery, imageQuality: 70, maxHeight: 512, maxWidth: 512);
+      if (image != null) {
+        imageUploading.value = true;
+        // Upload image
+        final imageUrl = await userRepository.uploadImage('Users/Images/Profile/', image);
+
+        // Update User Image Record
+        Map<String, dynamic> json = {'ProfilePicture': imageUrl};
+        await userRepository.updateSingleField(json);
+
+        user.value.profilePicture = imageUrl;
+        MyAppLoader.successSnackBar(title: 'Congratulations', message: 'Your profile image has been updated!');
+      }
+    } catch (e) {
+      MyAppLoader.errorSnackBar(title: 'Warning', message: 'Something went wrong: $e');
+    } finally {
+      imageUploading.value = false;
+    }
   }
 }

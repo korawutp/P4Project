@@ -47,6 +47,13 @@ dependencies:
   giffy_dialog: ^2.0.0+2
 
 
+  cached_network_image: ^3.3.1
+  permission_handler: ^11.2.0
+  encrypt: ^5.0.3
+  network_info_plus: ^4.1.0+1
+  
+
+
 # ------------------- DEV DEPENDENCIES ------------------- #
 dev_dependencies:
   flutter_test:

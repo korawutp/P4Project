@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:workproject/common/widgets/circular_image/circular_image.dart';
 import 'package:workproject/common/widgets/shimmer/shimmer.dart';
-import 'package:workproject/features/authentication/screens/login/login.dart';
 import 'package:workproject/features/personalization/controllers/user_controller/user_controller.dart';
 import 'package:workproject/features/personalization/screens/edit_profile/edit_profile.dart';
 import 'package:workproject/utils/constants/colors.dart';
@@ -30,12 +30,16 @@ class ProfileScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CircleAvatar(
-                      radius: 50,
-                      backgroundImage: AssetImage(
-                        MyAppImage.profile,
-                      ),
-                    ),
+                    Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image = networkImage.isNotEmpty ? networkImage : MyAppImage.profile;
+                      return MyAppCircularImage(
+                        image: image,
+                        width: 100,
+                        height: 100,
+                        isNetworkImage: networkImage.isNotEmpty,
+                      );
+                    }),
                     SizedBox(height: 10), // Add some space between the avatar and text
                     Obx(() {
                       if (controller.profileLoading.value) {
@@ -100,7 +104,7 @@ class ProfileScreen extends StatelessWidget {
                 ListTile(
                   leading: Icon(Iconsax.logout),
                   title: Text('Logout'),
-                  onTap: () => Get.offAll(() => const LoginScreen()),
+                  onTap: () => controller.logoutAccount(),
                 ),
               ],
             ),

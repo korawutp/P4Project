@@ -23,8 +23,7 @@ class _LinearTimerState extends State<LinearTimer> {
   @override
   void initState() {
     super.initState();
-    _secondsRemaining =
-        widget.durationMinutes * 60; // Convert minutes to seconds
+    _secondsRemaining = widget.durationMinutes * 60; // Convert minutes to seconds
     _barWidth = 1.0;
     _startTimer();
   }
@@ -35,10 +34,8 @@ class _LinearTimerState extends State<LinearTimer> {
       setState(() {
         if (_secondsRemaining > 0) {
           _secondsRemaining -= 1; // Decrement by 1 second
-          _barWidth = _secondsRemaining <= 0
-              ? 0
-              : _secondsRemaining /
-                  (widget.durationMinutes * 60); // Convert back to minutes
+          _barWidth =
+              _secondsRemaining <= 0 ? 0 : _secondsRemaining / (widget.durationMinutes * 60); // Convert back to minutes
         } else {
           widget.onTimerFinish();
           timer.cancel();
@@ -61,12 +58,10 @@ class _LinearTimerState extends State<LinearTimer> {
       children: [
         Container(
           height: 20.0,
-          width: 320,
+          width: 400,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
-                topRight: Radius.circular(16),
-                bottomLeft: Radius.circular(16),
-                bottomRight: Radius.circular(16)),
+                topRight: Radius.circular(16), bottomLeft: Radius.circular(16), bottomRight: Radius.circular(16)),
             color: Colors.black,
           ),
           child: FractionallySizedBox(
@@ -77,9 +72,7 @@ class _LinearTimerState extends State<LinearTimer> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(16),
-                      bottomLeft: Radius.circular(16),
-                      bottomRight: Radius.circular(16)),
+                      topRight: Radius.circular(16), bottomLeft: Radius.circular(16), bottomRight: Radius.circular(16)),
                   color: Colors.white,
                 ),
               ),
@@ -100,8 +93,7 @@ class _LinearTimerState extends State<LinearTimer> {
                         ? "finished"
                         : "$minutes:${seconds.toString().padLeft(2, '0')} left", // Display in mm:ss format
                     style: TextStyle(
-                      color:
-                          _secondsRemaining <= 0 ? Colors.white : Colors.black,
+                      color: _secondsRemaining <= 0 ? Colors.white : Colors.black,
                       fontSize: 12,
                     ),
                   ),

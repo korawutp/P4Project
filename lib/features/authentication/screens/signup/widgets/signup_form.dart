@@ -47,14 +47,26 @@ class MyAppSignUpForm extends StatelessWidget {
           ),
           const SizedBox(height: MyAppSizes.spaceBtwInputFields),
 
-          // Username
+          // // Username
+          // TextFormField(
+          //   controller: controller.userName,
+          //   validator: (value) => MyAppValidator.validationEmptyText('Username', value),
+          //   expands: false,
+          //   decoration: const InputDecoration(
+          //     prefixIcon: Icon(Iconsax.user_edit),
+          //     labelText: MyAppText.username,
+          //   ),
+          // ),
+          // const SizedBox(height: MyAppSizes.spaceBtwInputFields),
+          
+          // StudentID
           TextFormField(
-            controller: controller.userName,
-            validator: (value) => MyAppValidator.validationEmptyText('Username', value),
+            controller: controller.studentID,
+            validator: (value) => MyAppValidator.validationEmptyText('Student ID', value),
             expands: false,
             decoration: const InputDecoration(
               prefixIcon: Icon(Iconsax.user_edit),
-              labelText: MyAppText.username,
+              labelText: MyAppText.studentID,
             ),
           ),
           const SizedBox(height: MyAppSizes.spaceBtwInputFields),

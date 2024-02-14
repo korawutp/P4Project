@@ -4,7 +4,6 @@ import 'package:workproject/bindings/general_bindings.dart';
 import 'package:workproject/utils/constants/colors.dart';
 import 'package:workproject/utils/theme/theme.dart';
 
-
 /// -- Use this Class to set the themes, initial Binding, etc --
 class App extends StatelessWidget {
   const App({super.key});
@@ -19,7 +18,15 @@ class App extends StatelessWidget {
       initialBinding: GeneralBindings(),
 
       /// Show Loader or Circular Progress Indicator meanwhile Authentication Repository is deciding to show relevant screen.
-      home: const Scaffold(backgroundColor: MyAppColors.primary, body: Center(child: CircularProgressIndicator(color: MyAppColors.white,),),),
+      home: const Scaffold(
+        backgroundColor: MyAppColors.white,
+        body: Center(
+          child: CircularProgressIndicator(
+            color: MyAppColors.white,
+          ),
+        ),
+        
+      ),
     );
   }
 }

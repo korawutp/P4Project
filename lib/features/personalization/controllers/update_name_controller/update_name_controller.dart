@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:workproject/data/repository/user/user_repository.dart';
 import 'package:workproject/features/personalization/controllers/user_controller/user_controller.dart';
-import 'package:workproject/features/personalization/screens/edit_profile/edit_profile.dart';
 import 'package:workproject/utils/constants/image_strings.dart';
 import 'package:workproject/utils/helpers/network_manager.dart';
 import 'package:workproject/utils/popups/full_screen_loader.dart';
@@ -63,7 +62,7 @@ class UpdateNameController extends GetxController {
       MyAppLoader.successSnackBar(title: 'Congratulations', message: 'Your name has been updated');
 
       // Move to previous screen.
-      Get.off(() => const EditProfileScreen());
+      Get.close(1);
     } catch (e) {
       MyAppFullScreenLoader.stopLoading();
       MyAppLoader.errorSnackBar(title: 'Warning!', message: e.toString());
