@@ -21,7 +21,6 @@ dependencies:
   lottie: ^2.4.0
   rive: ^0.11.3
   shimmer: ^3.0.0
-  rive: ^0.11.3
   image_picker: ^1.0.7
   url_launcher: ^6.2.2
   connectivity_plus: ^5.0.2

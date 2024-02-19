@@ -16,6 +16,7 @@ import network_info_plus
 import path_provider_foundation
 import printing
 import rive_common
+import smart_auth
 import sqflite
 import url_launcher_macos
 

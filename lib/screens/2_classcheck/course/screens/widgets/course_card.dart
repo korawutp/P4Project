@@ -6,6 +6,7 @@ import 'package:workproject/screens/2_classcheck/course/controllers/course_contr
 import 'package:workproject/screens/2_classcheck/course/screens/course_code.dart';
 import 'package:workproject/features/personalization/controllers/user_controller/user_controller.dart';
 import 'package:workproject/screens/2_classcheck/course/screens/widgets/countdowntimer.dart';
+import 'package:workproject/screens/2_classcheck/course/screens/widgets/popup_confirm.dart';
 import 'package:workproject/screens/2_classcheck/course/screens/widgets/popupcode_confirm.dart';
 import 'package:workproject/utils/constants/colors.dart';
 import 'package:workproject/utils/device/device_utility.dart';
@@ -128,7 +129,8 @@ class CourseCard extends StatelessWidget {
                                     if (status != 'Checked') {
                                       showDialog(
                                         context: context,
-                                        builder: (BuildContext context) => PopupCodeConfirm(id: id),
+                                        builder: (BuildContext context) =>
+                                            classCode != null ? PopupCodeConfirm(id: id) : PopupConfirm(id: id),
                                       );
                                     }
                                   }
