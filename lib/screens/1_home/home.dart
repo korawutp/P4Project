@@ -7,9 +7,9 @@ import 'package:workproject/screens/1_home/widgets/home_classtile.dart';
 import 'package:workproject/screens/1_home/widgets/home_days.dart';
 import 'package:workproject/screens/1_home/widgets/home_searchbar.dart';
 import 'package:workproject/screens/3_history/history.dart';
-
 import 'package:get/get.dart';
 import 'package:workproject/features/personalization/controllers/user_controller/user_controller.dart';
+import 'package:workproject/utils/constants/colors.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final controller = Get.put(UserController());
     return Scaffold(
-      backgroundColor: Color(0xFFF9813A),
+      backgroundColor: MyAppColors.primary,
       body: Column(
         children: [
           SizedBox(
@@ -54,19 +54,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text(
                       'How was your class today?',
                       style: TextStyle(
-                        color: Color(0xFFFCF1F1),
+                        color: MyAppColors.secondary,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => HistoryScreen()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HistoryScreen()));
                       },
                       child: Text(
                         'See All',
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                              color: Color(0xFF1A1C20),
+                              color: MyAppColors.secondary,
                               fontSize: 12,
                             ),
                       ),
@@ -91,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: Container(
                 padding: EdgeInsets.all(20),
-                color: Color(0xFF1A1C20),
+                color: MyAppColors.tertiary,
                 child: Center(
                   child: Column(
                     children: [
@@ -103,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
-                              color: Color(0xFFFCF1F1),
+                              color: MyAppColors.primary,
                             ),
                           ),
                         ],
@@ -171,7 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
               return Text(
                 'Hello ${controller.user.value.firstName} !',
                 style: const TextStyle(
-                  color: Color(0xFFFCF1F1),
+                  color: MyAppColors.secondary,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
@@ -185,10 +188,10 @@ class _HomeScreenState extends State<HomeScreen> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
-            backgroundColor: Color(0xFFFCF1F1),
+            backgroundColor: MyAppColors.secondary,
             fixedSize: const Size(50, 50),
           ),
-          icon: const Icon(Icons.notifications, color: Color(0xFF1A1C20)),
+          icon: const Icon(Icons.notifications, color: MyAppColors.primary),
         ),
       ],
     );

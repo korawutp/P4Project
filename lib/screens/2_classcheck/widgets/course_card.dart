@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:workproject/features/course/controllers/course_controller.dart';
 import 'package:workproject/screens/2_classcheck/widgets/countdowntimer.dart';
-import 'package:workproject/screens/2_classcheck/widgets/popup_confirm.dart';
+
+import 'package:workproject/screens/2_classcheck/widgets/popupcode_confirm.dart';
+import 'package:workproject/utils/constants/colors.dart';
 
 class CourseCard extends StatelessWidget {
   CourseCard({
@@ -20,14 +22,15 @@ class CourseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(CourseController());
-    final String formattedDate = DateFormat('yyyy-MM-dd.kk:mm').format(createdAt);
+    final String formattedDate =
+        DateFormat('dd MMM yyyy-kk:mm').format(createdAt);
     return Padding(
       padding: const EdgeInsets.all(6.0),
       child: Container(
-        width: 320,
-        height: 120,
+        width: 400,
+        height: 110,
         decoration: BoxDecoration(
-          color: Colors.amber,
+          color: MyAppColors.error,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
@@ -36,40 +39,42 @@ class CourseCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        name,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          color: Colors.black,
+                Container(
+                  width: 200,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(name,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.black,
+                            ),
+                            overflow: TextOverflow.ellipsis // Handle long names
+                            ),
+                        Text(
+                          'Created at: ${formattedDate}',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black,
+                          ),
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        overflow: TextOverflow.ellipsis, // Handle long names
-                      ),
-                      Text(
-                        'Created at: ${formattedDate}',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.black,
+                        Text(
+                          'By ${createdBy}',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black,
+                          ),
                         ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Text(
-                        'By ${createdBy}',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
                   child: Obx(() {
                     final status = controller.getCourseStatus(id);
                     Color buttonColor = Colors.blue; // สีปุ่มเริ่มต้น
@@ -93,7 +98,8 @@ class CourseCard extends StatelessWidget {
                                 if (status != 'Checked') {
                                   showDialog(
                                     context: context,
-                                    builder: (BuildContext context) => PopupConfirm(id: id),
+                                    builder: (BuildContext context) =>
+                                        PopupCodeConfirm(id: id),
                                   );
                                 }
                               }
@@ -112,8 +118,8 @@ class CourseCard extends StatelessWidget {
               durationMinutes: 2, // Adjust timer duration here
               onTimerFinish: () {
                 // Properly call a method to update the status
-                controller.updateCourseStatus(
-                    id, 'Expired'); // Assuming this method exists and properly updates the course status
+                controller.updateCourseStatus(id,
+                    'Expired'); // Assuming this method exists and properly updates the course status
                 print('Timer finished! Status updated to Expired.');
               },
             ),
