@@ -26,12 +26,6 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "asn1lib",
-      "rootUri": "file:///C:/Users/koraw/AppData/Local/Pub/Cache/hosted/pub.dev/asn1lib-1.5.2",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
       "name": "async",
       "rootUri": "file:///C:/Users/koraw/AppData/Local/Pub/Cache/hosted/pub.dev/async-2.11.0",
       "packageUri": "lib/",
@@ -150,12 +144,6 @@
       "rootUri": "file:///C:/Users/koraw/AppData/Local/Pub/Cache/hosted/pub.dev/dbus-0.7.10",
       "packageUri": "lib/",
       "languageVersion": "2.17"
-    },
-    {
-      "name": "encrypt",
-      "rootUri": "file:///C:/Users/koraw/AppData/Local/Pub/Cache/hosted/pub.dev/encrypt-5.0.3",
-      "packageUri": "lib/",
-      "languageVersion": "2.18"
     },
     {
       "name": "fake_async",
@@ -602,6 +590,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "pinput",
+      "rootUri": "file:///C:/Users/koraw/AppData/Local/Pub/Cache/hosted/pub.dev/pinput-4.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "platform",
       "rootUri": "file:///C:/Users/koraw/AppData/Local/Pub/Cache/hosted/pub.dev/platform-3.1.4",
       "packageUri": "lib/",
@@ -656,10 +650,10 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "slide_countdown",
-      "rootUri": "file:///C:/Users/koraw/AppData/Local/Pub/Cache/hosted/pub.dev/slide_countdown-1.5.1",
+      "name": "smart_auth",
+      "rootUri": "file:///C:/Users/koraw/AppData/Local/Pub/Cache/hosted/pub.dev/smart_auth-2.0.0",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "2.16"
     },
     {
       "name": "smooth_page_indicator",
@@ -704,12 +698,6 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "stream_duration",
-      "rootUri": "file:///C:/Users/koraw/AppData/Local/Pub/Cache/hosted/pub.dev/stream_duration-4.2.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "string_scanner",
       "rootUri": "file:///C:/Users/koraw/AppData/Local/Pub/Cache/hosted/pub.dev/string_scanner-1.2.0",
       "packageUri": "lib/",
@@ -744,6 +732,12 @@
       "rootUri": "file:///C:/Users/koraw/AppData/Local/Pub/Cache/hosted/pub.dev/universal_io-2.2.2",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "universal_platform",
+      "rootUri": "file:///C:/Users/koraw/AppData/Local/Pub/Cache/hosted/pub.dev/universal_platform-1.0.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "url_launcher",
@@ -842,7 +836,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-02-14T07:32:23.753367Z",
+  "generated": "2024-02-19T03:44:25.282662Z",
   "generator": "pub",
   "generatorVersion": "3.2.2"
 }

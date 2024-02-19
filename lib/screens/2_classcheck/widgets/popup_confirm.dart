@@ -13,7 +13,7 @@ class PopupConfirm extends StatelessWidget {
     return GiffyDialog.image(
       Image.network(
         "https://raw.githubusercontent.com/Shashank02051997/FancyGifDialog-Android/master/GIF's/gif14.gif",
-        height: 200,
+        height: 150,
         fit: BoxFit.cover,
       ),
       title: Text(
