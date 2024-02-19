@@ -67,5 +67,5 @@ class MyAppText {
   static const String resetPasswordSubTitle =
       "Your account security is our priority! We've sent you a secure link to safely change your password and keep your account protected.";
   static const String courseName = 'Course Name';
-  static const String duration  = 'Duration';
+  static const String duration  = 'Duration (Minutes)';
 }

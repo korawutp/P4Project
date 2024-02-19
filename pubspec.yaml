@@ -20,11 +20,14 @@ dependencies:
   logger: ^2.0.2
   lottie: ^2.4.0
   shimmer: ^3.0.0
+  rive: ^0.11.3
   image_picker: ^1.0.7
   url_launcher: ^6.2.2
   connectivity_plus: ^5.0.2
   flutter_native_splash: ^2.3.8
   smooth_page_indicator: ^1.1.0
+  calendar_timeline_sbk: ^1.1.7
+  giffy_dialog: ^2.0.0+2
 
   # Icons
   iconsax: ^0.0.8
@@ -33,7 +36,6 @@ dependencies:
   # State Management
   get: ^4.6.6
   get_storage: ^2.1.1
-  rive: ^0.11.3
 
   # Firebase
   firebase_core: ^2.24.2
@@ -42,15 +44,13 @@ dependencies:
   google_sign_in: ^6.2.1
   firebase_storage: ^11.6.0
   
-  calendar_timeline_sbk: ^1.1.7
-  slide_countdown: ^1.5.1
-  giffy_dialog: ^2.0.0+2
-
-
+  
   cached_network_image: ^3.3.1
   permission_handler: ^11.2.0
-  encrypt: ^5.0.3
   network_info_plus: ^4.1.0+1
+  pdf: ^3.10.7
+  printing: ^5.11.1
+  path_provider: ^2.1.2
   
 
 
