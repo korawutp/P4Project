@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final controller = Get.put(UserController());
     return Scaffold(
-      backgroundColor: MyAppColors.primary,
+      backgroundColor: MyAppColors.c1,
       body: Column(
         children: [
           SizedBox(
@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text(
                       'How was your class today?',
                       style: TextStyle(
-                        color: MyAppColors.secondary,
+                        color: MyAppColors.c2,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Text(
                         'See All',
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                              color: MyAppColors.secondary,
+                              color: MyAppColors.c2,
                               fontSize: 12,
                             ),
                       ),
@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: Container(
                 padding: EdgeInsets.all(20),
-                color: MyAppColors.tertiary,
+                color: MyAppColors.c3,
                 child: Center(
                   child: Column(
                     children: [
@@ -106,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
-                              color: MyAppColors.primary,
+                              color: MyAppColors.c1,
                             ),
                           ),
                         ],
@@ -174,7 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
               return Text(
                 'Hello ${controller.user.value.firstName} !',
                 style: const TextStyle(
-                  color: MyAppColors.secondary,
+                  color: MyAppColors.c2,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
@@ -188,10 +188,10 @@ class _HomeScreenState extends State<HomeScreen> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
-            backgroundColor: MyAppColors.secondary,
+            backgroundColor: MyAppColors.c2,
             fixedSize: const Size(50, 50),
           ),
-          icon: const Icon(Icons.notifications, color: MyAppColors.primary),
+          icon: const Icon(Icons.notifications, color: MyAppColors.c1),
         ),
       ],
     );

@@ -10,7 +10,7 @@ class MyAppOutlinedButtonTheme {
     style: OutlinedButton.styleFrom(
       elevation: 0,
       foregroundColor: Colors.black,
-      side: const BorderSide(color: MyAppColors.primary),
+      side: const BorderSide(color: MyAppColors.c1),
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
       textStyle: const TextStyle(
         fontSize: 16,
@@ -28,7 +28,7 @@ class MyAppOutlinedButtonTheme {
     style: OutlinedButton.styleFrom(
       elevation: 0,
       foregroundColor: Colors.white,
-      side: const BorderSide(color: MyAppColors.primary),
+      side: const BorderSide(color: MyAppColors.c1),
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
       textStyle: const TextStyle(
         fontSize: 16,

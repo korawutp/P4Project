@@ -19,7 +19,7 @@ class OnBoardingNextButton extends StatelessWidget {
             elevation: 0,
             side: BorderSide.none, // Removes border
             shape: const CircleBorder(),
-            backgroundColor: MyAppColors.primary),
+            backgroundColor: MyAppColors.c2),
         child: const Icon(Iconsax.arrow_right_3),
       ),
     );

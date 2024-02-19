@@ -10,10 +10,10 @@ class MyAppElevatedButtonTheme {
     style: ElevatedButton.styleFrom(
       elevation: 0,
       foregroundColor: Colors.white,
-      backgroundColor: MyAppColors.primary,
+      backgroundColor: MyAppColors.c1,
       disabledForegroundColor: Colors.grey,
       disabledBackgroundColor: Colors.grey,
-      side: const BorderSide(color: MyAppColors.primary),
+      side: const BorderSide(color: MyAppColors.c1),
       padding: const EdgeInsets.symmetric(vertical: 18),
       textStyle: const TextStyle(
         fontSize: 16,
@@ -31,10 +31,10 @@ class MyAppElevatedButtonTheme {
     style: ElevatedButton.styleFrom(
       elevation: 0,
       foregroundColor: Colors.white,
-      backgroundColor: MyAppColors.primary,
+      backgroundColor: MyAppColors.c1,
       disabledForegroundColor: Colors.grey,
       disabledBackgroundColor: Colors.grey,
-      side: const BorderSide(color: MyAppColors.primary),
+      side: const BorderSide(color: MyAppColors.c1),
       padding: const EdgeInsets.symmetric(vertical: 18),
       textStyle: const TextStyle(
         fontSize: 16,

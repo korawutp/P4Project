@@ -4,9 +4,9 @@ class MyAppColors {
   MyAppColors._();
 
   // App Base Colors
-  static const Color primary = Color(0xFFEFEFEF);
-  static const Color secondary = Color(0xFF070707);
-  static const Color tertiary = Color(0xFF3454D1);
+  static const Color c1 = Color(0xFFEFEFEF);
+  static const Color c2 = Color(0xFF070707);
+  static const Color c3 = Color(0xFF3454D1);
   static const Color c4 = Color(0xFF34D1BF);
   static const Color c5 = Color(0xFFD1345B);
 

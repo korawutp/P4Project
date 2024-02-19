@@ -6,7 +6,8 @@ class MyAppText {
   static const String appName = 'Flutter Starter';
 
   // -- App Description
-  static const String appDescription = 'A starter kit for beginner learns with all the basic necessary features.';
+  static const String appDescription =
+      'A starter kit for beginner learns with all the basic necessary features.';
 
   // -- App Version
   static const String appVersion = '1.0.0';
@@ -27,7 +28,8 @@ class MyAppText {
 
   // -- Login
   static const String loginTitle = 'Welcome back!';
-  static const String loginSubTitle = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
+  static const String loginSubTitle =
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
   static const String email = 'Email';
   static const String emailHint = 'Enter your email';
   static const String password = 'Password';
@@ -67,5 +69,5 @@ class MyAppText {
   static const String resetPasswordSubTitle =
       "Your account security is our priority! We've sent you a secure link to safely change your password and keep your account protected.";
   static const String courseName = 'Course Name';
-  static const String duration  = 'Duration';
+  static const String duration = 'Duration';
 }
