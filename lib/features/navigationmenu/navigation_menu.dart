@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:workproject/components/animated_bar.dart';
-import 'package:workproject/features/course/screens/course/course.dart';
+import 'package:workproject/screens/2_classcheck/course/screens/course.dart';
 import 'package:workproject/models/rive_asset.dart';
 import 'package:workproject/screens/1_home/home.dart';
 import 'package:workproject/screens/3_history/history.dart';

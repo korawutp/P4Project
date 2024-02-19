@@ -32,6 +32,18 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "barcode",
+      "rootUri": "file:///C:/Users/teeta/AppData/Local/Pub/Cache/hosted/pub.dev/barcode-2.2.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "bidi",
+      "rootUri": "file:///C:/Users/teeta/AppData/Local/Pub/Cache/hosted/pub.dev/bidi-2.0.10",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "boolean_selector",
       "rootUri": "file:///C:/Users/teeta/AppData/Local/Pub/Cache/hosted/pub.dev/boolean_selector-2.1.1",
       "packageUri": "lib/",
@@ -512,6 +524,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "path_parsing",
+      "rootUri": "file:///C:/Users/teeta/AppData/Local/Pub/Cache/hosted/pub.dev/path_parsing-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path_provider",
       "rootUri": "file:///C:/Users/teeta/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider-2.1.2",
       "packageUri": "lib/",
@@ -546,6 +564,12 @@
       "rootUri": "file:///C:/Users/teeta/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_windows-2.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.19"
+    },
+    {
+      "name": "pdf",
+      "rootUri": "file:///C:/Users/teeta/AppData/Local/Pub/Cache/hosted/pub.dev/pdf-3.10.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
     },
     {
       "name": "permission_handler",
@@ -614,6 +638,18 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "printing",
+      "rootUri": "file:///C:/Users/teeta/AppData/Local/Pub/Cache/hosted/pub.dev/printing-5.11.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "qr",
+      "rootUri": "file:///C:/Users/teeta/AppData/Local/Pub/Cache/hosted/pub.dev/qr-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
       "name": "rive",
       "rootUri": "file:///C:/Users/teeta/AppData/Local/Pub/Cache/hosted/pub.dev/rive-0.11.17",
       "packageUri": "lib/",
@@ -648,12 +684,6 @@
       "rootUri": "file:///C:/src/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "3.2"
-    },
-    {
-      "name": "smart_auth",
-      "rootUri": "file:///C:/Users/teeta/AppData/Local/Pub/Cache/hosted/pub.dev/smart_auth-2.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.16"
     },
     {
       "name": "smooth_page_indicator",
@@ -836,7 +866,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-02-19T06:40:59.824700Z",
+  "generated": "2024-02-17T19:07:10.309917Z",
   "generator": "pub",
   "generatorVersion": "3.2.2"
 }

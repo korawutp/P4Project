@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
-import 'package:workproject/features/course/controllers/course_controller.dart';
+import 'package:workproject/screens/2_classcheck/course/controllers/course_controller.dart';
 
 class PopupConfirm extends StatelessWidget {
   const PopupConfirm({super.key, required this.id});
