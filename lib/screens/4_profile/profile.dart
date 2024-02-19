@@ -7,6 +7,7 @@ import 'package:workproject/features/personalization/controllers/user_controller
 import 'package:workproject/features/personalization/screens/edit_profile/edit_profile.dart';
 import 'package:workproject/utils/constants/colors.dart';
 import 'package:workproject/utils/constants/image_strings.dart';
+import 'package:workproject/utils/constants/sizes.dart';
 import 'package:workproject/utils/helpers/helper_functions.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -21,18 +22,20 @@ class ProfileScreen extends StatelessWidget {
           // Header
           SliverAppBar(
             automaticallyImplyLeading: false,
-            backgroundColor: MyAppColors.c3,
+            backgroundColor: MyAppColors.c1,
             expandedHeight: MyAppHelperFunctions.screenHeight() * 0.3,
             floating: false,
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
-                color: MyAppColors.c1,
+                color: MyAppColors.c3,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Obx(() {
                       final networkImage = controller.user.value.profilePicture;
-                      final image = networkImage.isNotEmpty ? networkImage : MyAppImage.profile;
+                      final image = networkImage.isNotEmpty
+                          ? networkImage
+                          : MyAppImage.profile;
                       return MyAppCircularImage(
                         image: image,
                         width: 100,
@@ -40,27 +43,30 @@ class ProfileScreen extends StatelessWidget {
                         isNetworkImage: networkImage.isNotEmpty,
                       );
                     }),
-                    SizedBox(height: 10), // Add some space between the avatar and text
+                    SizedBox(
+                        height: MyAppSizes
+                            .sm), // Add some space between the avatar and text
                     Obx(() {
                       if (controller.profileLoading.value) {
                         // Display a shimmer effect loader while user profile is being loaded.
-                        return const MyAppShimmerEffect(width: 80, height: 15);
+                        return const MyAppShimmerEffect(
+                            width: 100, height: 100);
                       } else {
                         return Column(
                           children: [
                             Text(
-                              controller.user.value.fullName, // Replace with the actual name
+                              controller.user.value.fullName,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                                color: MyAppColors.c1,
                               ),
                             ),
                             Text(
-                              controller.user.value.email, // Replace with the actual email
+                              controller.user.value.studentID,
                               style: TextStyle(
                                 fontSize: 14,
-                                color: Colors.white,
+                                color: MyAppColors.c1,
                               ),
                             ),
                           ],
@@ -132,20 +138,17 @@ Widget buildProfileButton(String title, IconData icon) {
           // Handle Logout button tap
         }
       },
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon),
-            SizedBox(height: 8.0),
-            Text(
-              title,
-              style: TextStyle(fontSize: 14.0),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(icon),
+          SizedBox(height: 8.0),
+          Text(
+            title,
+            style: TextStyle(fontSize: 14.0),
+            textAlign: TextAlign.center,
+          ),
+        ],
       ),
     ),
   );

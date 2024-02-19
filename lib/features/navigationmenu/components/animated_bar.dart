@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workproject/utils/constants/colors.dart';
 
 class AnimatedBar extends StatelessWidget {
   const AnimatedBar({
@@ -16,7 +17,7 @@ class AnimatedBar extends StatelessWidget {
       height: 4,
       width: isActive ? 20 : 0,
       decoration: const BoxDecoration(
-        color: Color(0xFFF9813A),
+        color: MyAppColors.c3,
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
     );

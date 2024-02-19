@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
+import 'package:workproject/screens/2_classcheck/course/controllers/course_controller.dart';
 import 'package:pinput/pinput.dart';
-import 'package:workproject/features/course/controllers/course_controller.dart';
+import 'package:workproject/utils/constants/colors.dart';
+import 'package:workproject/utils/constants/sizes.dart';
+import 'package:workproject/utils/constants/text_strings.dart';
 
 class PopupCodeConfirm extends StatelessWidget {
   const PopupCodeConfirm({super.key, required this.id});
@@ -25,7 +28,7 @@ class PopupCodeConfirm extends StatelessWidget {
           width: 40,
           height: 3,
           decoration: BoxDecoration(
-            color: Colors.orange,
+            color: MyAppColors.c3,
             borderRadius: BorderRadius.circular(8),
           ),
         ),
@@ -38,7 +41,7 @@ class PopupCodeConfirm extends StatelessWidget {
           width: 40,
           height: 3,
           decoration: BoxDecoration(
-            color: Colors.black,
+            color: MyAppColors.c2,
             borderRadius: BorderRadius.circular(8),
           ),
         ),
@@ -52,17 +55,20 @@ class PopupCodeConfirm extends StatelessWidget {
         fit: BoxFit.cover,
       ),
       title: Text(
-        'Is that you?',
+        MyAppText.popupTitle,
         textAlign: TextAlign.center,
       ),
+      backgroundColor: MyAppColors.c1,
       content: SingleChildScrollView(
         child: Column(
           children: [
             const Text(
-              "Just want to make sure you're in the classroom. So please enter the code below.\nIf you've filled complete, I hope you have a wonderful day!",
+              MyAppText.popupSubTitle2,
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 10),
+            const SizedBox(
+              height: MyAppSizes.sm,
+            ),
             Pinput(
               length: 6,
               pinAnimationType: PinAnimationType.fade,

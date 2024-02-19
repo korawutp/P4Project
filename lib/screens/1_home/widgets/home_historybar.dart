@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:workproject/utils/constants/colors.dart';
 
 class Historybar extends StatelessWidget {
   const Historybar({super.key});
@@ -8,7 +9,7 @@ class Historybar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xFFFFD5CD),
+        color: MyAppColors.c3,
         borderRadius: BorderRadius.circular(12),
       ),
       padding: EdgeInsets.all(6),

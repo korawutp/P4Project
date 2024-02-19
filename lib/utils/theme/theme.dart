@@ -22,7 +22,7 @@ class AppTheme {
     primaryColor: MyAppColors.c1,
     textTheme: MyAppTextTheme.lightTextTheme,
     chipTheme: MyAppChipTheme.lightChipTheme,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: MyAppColors.c1,
     appBarTheme: MyAppBarTheme.lightAppBarTheme,
     checkboxTheme: MyAppCheckboxTheme.lightCheckboxTheme,
     bottomSheetTheme: MyAppButtomSheetTheme.lightButtomSheetTheme,

@@ -19,6 +19,7 @@ class EditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(UserController());
     return Scaffold(
+      backgroundColor: MyAppColors.c1,
       appBar: AppBar(
         title: Text('Edit Profile'),
       ),
@@ -33,7 +34,9 @@ class EditProfileScreen extends StatelessWidget {
                 children: [
                   Obx(() {
                     final networkImage = controller.user.value.profilePicture;
-                    final image = networkImage.isNotEmpty ? networkImage : MyAppImage.profile;
+                    final image = networkImage.isNotEmpty
+                        ? networkImage
+                        : MyAppImage.profile;
                     return Stack(
                       alignment: Alignment.bottomRight,
                       children: [
@@ -54,10 +57,12 @@ class EditProfileScreen extends StatelessWidget {
                             width: 120,
                             height: 120,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(100), color: MyAppColors.white.withOpacity(0.4)),
+                                borderRadius: BorderRadius.circular(100),
+                                color: MyAppColors.c1.withOpacity(0.4)),
                             child: IconButton(
                               icon: Icon(Iconsax.edit),
-                              onPressed: () => controller.uploadUserProfilePicture(),
+                              onPressed: () =>
+                                  controller.uploadUserProfilePicture(),
                             ),
                           ),
                         ),
@@ -88,7 +93,10 @@ class EditProfileScreen extends StatelessWidget {
                 value: controller.user.value.fullName,
                 onPressed: () => Get.to(() => const ChangeName())),
             // MyAppProfileMenu(title: 'Username', value: controller.user.value.userName, onPressed: () {}),
-            MyAppProfileMenu(title: 'Student ID', value: controller.user.value.studentID, onPressed: () {}),
+            MyAppProfileMenu(
+                title: 'Student ID',
+                value: controller.user.value.studentID,
+                onPressed: () {}),
 
             const SizedBox(height: MyAppSizes.spaceBtwItems / 2),
             const Divider(),
@@ -106,12 +114,19 @@ class EditProfileScreen extends StatelessWidget {
             ),
 
             // MyAppProfileMenu(title: 'User ID', value: controller.user.value.id, icon: Iconsax.copy, onPressed: () {}),
-            MyAppProfileMenu(title: 'E-mail', value: controller.user.value.email, onPressed: () {}),
+            MyAppProfileMenu(
+                title: 'E-mail',
+                value: controller.user.value.email,
+                onPressed: () {}),
             MyAppProfileMenu(
                 title: 'Phone No.',
-                value: MyAppFormatter.formatPhoneNumber(controller.user.value.phoneNumber),
+                value: MyAppFormatter.formatPhoneNumber(
+                    controller.user.value.phoneNumber),
                 onPressed: () {}),
-            MyAppProfileMenu(title: 'Date of Birth', value: '12 May, 199x', onPressed: () {}),
+            MyAppProfileMenu(
+                title: 'Date of Birth',
+                value: '12 May, 199x',
+                onPressed: () {}),
             const Divider(),
             const SizedBox(
               height: MyAppSizes.spaceBtwItems,

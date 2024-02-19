@@ -1,13 +1,16 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:workproject/utils/constants/colors.dart';
 
 class LinearTimer extends StatefulWidget {
-  final int durationMinutes;
+  final DateTime startTime;
+  final DateTime endTime;
   final Function onTimerFinish;
 
   const LinearTimer({
     Key? key,
-    required this.durationMinutes,
+    required this.startTime,
+    required this.endTime,
     required this.onTimerFinish,
   }) : super(key: key);
 
@@ -18,27 +21,31 @@ class LinearTimer extends StatefulWidget {
 class _LinearTimerState extends State<LinearTimer> {
   late int _secondsRemaining;
   late double _barWidth;
-  late Timer _timer; // Declare a Timer object
+  late Timer _timer;
 
   @override
   void initState() {
     super.initState();
-    _secondsRemaining =
-        widget.durationMinutes * 60; // Convert minutes to seconds
-    _barWidth = 1.0;
+    _calculateInitialValues();
     _startTimer();
+  }
+
+  void _calculateInitialValues() {
+    final now = DateTime.now();
+    final totalDuration = widget.endTime.difference(widget.startTime).inSeconds;
+    _secondsRemaining = widget.endTime.difference(now).inSeconds;
+    _barWidth = (_secondsRemaining > 0) ? _secondsRemaining / totalDuration : 0;
   }
 
   void _startTimer() {
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      // Update duration to seconds
       setState(() {
         if (_secondsRemaining > 0) {
-          _secondsRemaining -= 1; // Decrement by 1 second
-          _barWidth = _secondsRemaining <= 0
-              ? 0
-              : _secondsRemaining /
-                  (widget.durationMinutes * 60); // Convert back to minutes
+          _secondsRemaining -= 1;
+          final totalDuration =
+              widget.endTime.difference(widget.startTime).inSeconds;
+          _barWidth =
+              (_secondsRemaining > 0) ? _secondsRemaining / totalDuration : 0;
         } else {
           widget.onTimerFinish();
           timer.cancel();
@@ -61,13 +68,12 @@ class _LinearTimerState extends State<LinearTimer> {
       children: [
         Container(
           height: 20.0,
-          width: 400,
+          width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
-                topRight: Radius.circular(16),
-                bottomLeft: Radius.circular(16),
-                bottomRight: Radius.circular(16)),
-            color: Colors.black,
+                bottomLeft: Radius.circular(12),
+                bottomRight: Radius.circular(12)),
+            color: MyAppColors.c2,
           ),
           child: FractionallySizedBox(
             alignment: Alignment.centerLeft,
@@ -77,17 +83,16 @@ class _LinearTimerState extends State<LinearTimer> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(16),
-                      bottomLeft: Radius.circular(16),
-                      bottomRight: Radius.circular(16)),
-                  color: Colors.white,
+                      topRight: Radius.circular(12),
+                      bottomLeft: Radius.circular(12),
+                      bottomRight: Radius.circular(12)),
+                  color: MyAppColors.c1,
                 ),
               ),
             ),
           ),
         ),
-        SizedBox(
-          height: 20,
+        Positioned.fill(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Row(
@@ -97,11 +102,12 @@ class _LinearTimerState extends State<LinearTimer> {
                 Expanded(
                   child: Text(
                     _secondsRemaining <= 0
-                        ? "finished"
+                        ? "Finished"
                         : "$minutes:${seconds.toString().padLeft(2, '0')} left", // Display in mm:ss format
                     style: TextStyle(
-                      color:
-                          _secondsRemaining <= 0 ? Colors.white : Colors.black,
+                      color: _secondsRemaining <= 0
+                          ? MyAppColors.c1
+                          : MyAppColors.c2,
                       fontSize: 12,
                     ),
                   ),

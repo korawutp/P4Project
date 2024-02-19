@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:workproject/utils/constants/colors.dart';
+import 'package:workproject/utils/constants/sizes.dart';
+import 'package:workproject/utils/theme/custom_themes/text_theme.dart';
 
 class HomeClasstile extends StatelessWidget {
   final icon;
@@ -21,8 +24,8 @@ class HomeClasstile extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Color(0xFFFCF1F1),
-          borderRadius: BorderRadius.circular(16),
+          color: MyAppColors.c1,
+          borderRadius: BorderRadius.circular(12),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -34,33 +37,23 @@ class HomeClasstile extends StatelessWidget {
                   child: Container(
                       padding: EdgeInsets.all(16),
                       color: color,
-                      child: Icon(
-                        icon,
-                        color: Color(0xFFFCF1F1),
-                      )),
+                      child: Icon(icon, color: MyAppColors.c1)),
                 ),
-                SizedBox(
-                  width: 12,
+                const SizedBox(
+                  width: MyAppSizes.iconXs,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // title
-                    Text(
-                      classNumber,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        color: Color(0xFFF9813A),
-                      ),
-                    ),
+                    Text(classNumber,
+                        style: MyAppTextTheme.lightTextTheme.titleLarge
+                            ?.copyWith(color: MyAppColors.c5)),
                     // subtitle
                     Text(
                       className,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF1A1C20),
-                          fontSize: 14),
+                      style: MyAppTextTheme.lightTextTheme.bodySmall
+                          ?.copyWith(color: MyAppColors.c2),
                     ),
                   ],
                 ),

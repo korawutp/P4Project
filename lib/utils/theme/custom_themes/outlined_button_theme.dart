@@ -9,12 +9,12 @@ class MyAppOutlinedButtonTheme {
   static final lightOutlinedButtonTheme = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       elevation: 0,
-      foregroundColor: Colors.black,
-      side: const BorderSide(color: MyAppColors.c1),
+      foregroundColor: MyAppColors.c2,
+      side: const BorderSide(color: MyAppColors.c2),
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
       textStyle: const TextStyle(
         fontSize: 16,
-        color: Colors.black,
+        color: MyAppColors.c2,
         fontWeight: FontWeight.w600,
       ),
       shape: RoundedRectangleBorder(

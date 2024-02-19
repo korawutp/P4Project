@@ -25,7 +25,6 @@ class App extends StatelessWidget {
             color: MyAppColors.white,
           ),
         ),
-        
       ),
     );
   }

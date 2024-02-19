@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:workproject/utils/constants/colors.dart';
+import 'package:workproject/utils/constants/sizes.dart';
+import 'package:workproject/utils/constants/text_strings.dart';
 
 class HomeSearchBar extends StatelessWidget {
   const HomeSearchBar({super.key});
@@ -9,16 +12,16 @@ class HomeSearchBar extends StatelessWidget {
       decoration: InputDecoration(
         prefixIcon: const Icon(
           Icons.search,
-          color: Color(0xFF1A1C20),
-          size: 24,
+          color: MyAppColors.darkGrey,
+          size: MyAppSizes.iconMd,
         ),
         floatingLabelBehavior: FloatingLabelBehavior.never,
-        labelText: "Search your classes",
+        labelText: MyAppText.searchCourse,
         labelStyle: const TextStyle(
-          color: Color(0xFFFFD5CD),
+          color: MyAppColors.darkGrey,
         ),
         filled: true,
-        fillColor: Color(0xFFFCF1F1),
+        fillColor: MyAppColors.grey,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
         ),
