@@ -9,15 +9,15 @@ class MyAppElevatedButtonTheme {
   static final lightElevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
-      foregroundColor: Colors.white,
-      backgroundColor: MyAppColors.primary,
+      foregroundColor: MyAppColors.c1,
+      backgroundColor: MyAppColors.c2,
       disabledForegroundColor: Colors.grey,
       disabledBackgroundColor: Colors.grey,
-      side: const BorderSide(color: MyAppColors.primary),
+      side: const BorderSide(color: MyAppColors.c2),
       padding: const EdgeInsets.symmetric(vertical: 18),
       textStyle: const TextStyle(
         fontSize: 16,
-        color: Colors.white,
+        color: MyAppColors.c1,
         fontWeight: FontWeight.w600,
       ),
       shape: RoundedRectangleBorder(
@@ -31,10 +31,10 @@ class MyAppElevatedButtonTheme {
     style: ElevatedButton.styleFrom(
       elevation: 0,
       foregroundColor: Colors.white,
-      backgroundColor: MyAppColors.primary,
+      backgroundColor: MyAppColors.c2,
       disabledForegroundColor: Colors.grey,
       disabledBackgroundColor: Colors.grey,
-      side: const BorderSide(color: MyAppColors.primary),
+      side: const BorderSide(color: MyAppColors.c2),
       padding: const EdgeInsets.symmetric(vertical: 18),
       textStyle: const TextStyle(
         fontSize: 16,

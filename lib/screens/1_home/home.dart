@@ -2,14 +2,17 @@
 //! touchable mini_history
 
 import 'package:flutter/material.dart';
+import 'package:workproject/common/styles/spacing_styles.dart';
 import 'package:workproject/common/widgets/shimmer/shimmer.dart';
 import 'package:workproject/screens/1_home/widgets/home_classtile.dart';
 import 'package:workproject/screens/1_home/widgets/home_days.dart';
 import 'package:workproject/screens/1_home/widgets/home_searchbar.dart';
-import 'package:workproject/screens/3_history/history.dart';
-
 import 'package:get/get.dart';
 import 'package:workproject/features/personalization/controllers/user_controller/user_controller.dart';
+import 'package:workproject/utils/constants/colors.dart';
+import 'package:workproject/utils/constants/sizes.dart';
+import 'package:workproject/utils/constants/text_strings.dart';
+import 'package:workproject/utils/theme/custom_themes/text_theme.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,62 +26,49 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final controller = Get.put(UserController());
     return Scaffold(
-      backgroundColor: Color(0xFFF9813A),
+      backgroundColor: MyAppColors.c1,
       body: Column(
         children: [
-          SizedBox(
-            height: 20,
+          const SizedBox(
+            height: MyAppSizes.spaceBtwSections,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding:
+                const EdgeInsets.symmetric(horizontal: MyAppSizes.defaultSpace),
             child: Column(
               children: [
                 //* Hi Row
                 _buildGreetingRow(controller),
 
-                SizedBox(
-                  height: 20,
+                const SizedBox(
+                  height: MyAppSizes.defaultSpace,
                 ),
 
                 //* search bar
                 HomeSearchBar(),
 
-                SizedBox(
-                  height: 20,
+                const SizedBox(
+                  height: MyAppSizes.defaultSpace,
                 ),
 
                 //* mini history page
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      'How was your class today?',
-                      style: TextStyle(
-                        color: Color(0xFFFCF1F1),
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => HistoryScreen()));
-                      },
-                      child: Text(
-                        'See All',
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                              color: Color(0xFF1A1C20),
-                              fontSize: 12,
-                            ),
-                      ),
-                    )
+                    Text(MyAppText.howWasYourClass,
+                        style: MyAppTextTheme.lightTextTheme.headlineSmall),
                   ],
+                ),
+
+                const SizedBox(
+                  height: MyAppSizes.sm,
                 ),
 
                 //* mini history
                 HomeDays(),
 
-                SizedBox(
-                  height: 20,
+                const SizedBox(
+                  height: MyAppSizes.defaultSpace,
                 ),
               ],
             ),
@@ -86,30 +76,25 @@ class _HomeScreenState extends State<HomeScreen> {
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(50),
-                topRight: Radius.circular(50),
+                topLeft: Radius.circular(36),
+                topRight: Radius.circular(36),
               ),
               child: Container(
-                padding: EdgeInsets.all(20),
-                color: Color(0xFF1A1C20),
+                padding: MyAppSpacingStyle.paddingWithAppBarHeight,
+                color: MyAppColors.c3,
                 child: Center(
                   child: Column(
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            "Let's see your enrolled class",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              color: Color(0xFFFCF1F1),
-                            ),
-                          ),
+                          Text(MyAppText.enrolledClass,
+                              style: MyAppTextTheme.lightTextTheme.headlineSmall
+                                  ?.copyWith(color: MyAppColors.c1)),
                         ],
                       ),
-                      SizedBox(
-                        height: 20,
+                      const SizedBox(
+                        height: MyAppSizes.defaultSpace,
                       ),
                       Expanded(
                         child: ListView(
@@ -169,12 +154,8 @@ class _HomeScreenState extends State<HomeScreen> {
               return const MyAppShimmerEffect(width: 80, height: 15);
             } else {
               return Text(
-                'Hello ${controller.user.value.firstName} !',
-                style: const TextStyle(
-                  color: Color(0xFFFCF1F1),
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+                'Hello ${controller.user.value.firstName}!',
+                style: MyAppTextTheme.lightTextTheme.headlineMedium,
               );
             }
           },
@@ -185,10 +166,10 @@ class _HomeScreenState extends State<HomeScreen> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
-            backgroundColor: Color(0xFFFCF1F1),
+            backgroundColor: MyAppColors.c2,
             fixedSize: const Size(50, 50),
           ),
-          icon: const Icon(Icons.notifications, color: Color(0xFF1A1C20)),
+          icon: const Icon(Icons.notifications, color: MyAppColors.c1),
         ),
       ],
     );

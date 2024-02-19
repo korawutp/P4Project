@@ -21,12 +21,14 @@ class CourseAddScreen extends StatelessWidget {
       /// Custom Appbar
       appBar: AppBar(
           title: Text(
-            'Add New Course',
+            MyAppText.addCourseTitle,
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           automaticallyImplyLeading: false,
           actions: [
-            IconButton(onPressed: () => Get.close(1), icon: const Icon(CupertinoIcons.clear)),
+            IconButton(
+                onPressed: () => Get.close(1),
+                icon: const Icon(CupertinoIcons.clear)),
           ]),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(MyAppSizes.defaultSpace),
@@ -35,7 +37,7 @@ class CourseAddScreen extends StatelessWidget {
           children: [
             // Headings
             Text(
-              'Create a new course for students to attend in the classroom.',
+              MyAppText.addCourseSubTitle,
               style: Theme.of(context).textTheme.labelMedium,
             ),
             const SizedBox(height: MyAppSizes.spaceBtwSections),
@@ -47,7 +49,8 @@ class CourseAddScreen extends StatelessWidget {
                 children: [
                   TextFormField(
                     controller: controller.courseName,
-                    validator: (value) => MyAppValidator.validationEmptyText('Course Name', value),
+                    validator: (value) => MyAppValidator.validationEmptyText(
+                        'Course Name', value),
                     expands: false,
                     decoration: const InputDecoration(
                       labelText: MyAppText.courseName,
@@ -57,7 +60,8 @@ class CourseAddScreen extends StatelessWidget {
                   const SizedBox(height: MyAppSizes.spaceBtwInputFields),
                   TextFormField(
                     controller: controller.duration,
-                    validator: (value) => MyAppValidator.validationEmptyText('Duration (Minutes)', value),
+                    validator: (value) => MyAppValidator.validationEmptyText(
+                        'Duration (Minutes)', value),
                     expands: false,
                     decoration: const InputDecoration(
                       labelText: MyAppText.duration,
@@ -77,7 +81,8 @@ class CourseAddScreen extends StatelessWidget {
                             onChanged: (bool? value) {
                               controller.toggleClassCodeEnabled(value ?? false);
                               if (value == true) {
-                                controller.generateClassCode(); // Generate class code initially
+                                controller
+                                    .generateClassCode(); // Generate class code initially
                               }
                             },
                           ),
@@ -85,7 +90,7 @@ class CourseAddScreen extends StatelessWidget {
                       ),
                       const SizedBox(width: MyAppSizes.sm),
                       Text(
-                        'Generate class code (If you need)',
+                        MyAppText.generateCode,
                       ),
                     ],
                   ),
@@ -98,18 +103,20 @@ class CourseAddScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Class Code:',
+                                  MyAppText.classCode,
                                 ),
                                 IconButton(
-                                  onPressed: () => controller.generateClassCode(),
-                                  icon: const Icon(Iconsax.shuffle, size: 24), // Use Iconsax shuffle icon
-                                  tooltip: 'Generate New Code', // Tooltip for better UX
+                                  onPressed: () =>
+                                      controller.generateClassCode(),
+                                  icon: const Icon(Iconsax.shuffle,
+                                      size: 24), // Use Iconsax shuffle icon
+                                  // Tooltip for better UX
                                 ),
                               ],
                             ),
                             Container(
-                              width: 400,
-                              decoration: BoxDecoration(color: MyAppColors.black),
+                              width: double.infinity,
+                              decoration: BoxDecoration(color: MyAppColors.c2),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -118,7 +125,7 @@ class CourseAddScreen extends StatelessWidget {
                                     style: TextStyle(
                                         fontSize: 72,
                                         fontWeight: FontWeight.bold,
-                                        color: MyAppColors.white), // Updated style
+                                        color: MyAppColors.c1), // Updated style
                                   ),
                                 ],
                               ),
@@ -135,7 +142,9 @@ class CourseAddScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () => controller.addCourse(userController.user.value.id,userController.user.value.fullName),
+                onPressed: () => controller.addCourse(
+                    userController.user.value.id,
+                    userController.user.value.fullName),
                 child: const Text('Confirm'),
               ),
             ),

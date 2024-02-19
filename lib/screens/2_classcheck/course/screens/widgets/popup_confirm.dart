@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
 import 'package:workproject/screens/2_classcheck/course/controllers/course_controller.dart';
+import 'package:workproject/utils/constants/colors.dart';
+import 'package:workproject/utils/constants/text_strings.dart';
 
 class PopupConfirm extends StatelessWidget {
   const PopupConfirm({super.key, required this.id});
@@ -13,15 +15,16 @@ class PopupConfirm extends StatelessWidget {
     return GiffyDialog.image(
       Image.network(
         "https://raw.githubusercontent.com/Shashank02051997/FancyGifDialog-Android/master/GIF's/gif14.gif",
-        height: 200,
+        height: 150,
         fit: BoxFit.cover,
       ),
       title: Text(
-        'Image Animation',
+        MyAppText.popupTitle,
         textAlign: TextAlign.center,
       ),
+      backgroundColor: MyAppColors.c1,
       content: Text(
-        'This is a image animation dialog box. This library helps you easily create fancy giffy dialog.',
+        MyAppText.popupSubTitle1,
         textAlign: TextAlign.center,
       ),
       actions: [

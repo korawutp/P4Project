@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:workproject/screens/1_home/widgets/home_historybar.dart';
+import 'package:workproject/utils/constants/colors.dart';
+import 'package:workproject/utils/constants/sizes.dart';
 
 class HomeDays extends StatelessWidget {
   const HomeDays({super.key});
@@ -13,13 +15,13 @@ class HomeDays extends StatelessWidget {
         Column(
           children: [
             Historybar(),
-            SizedBox(
-              height: 8,
+            const SizedBox(
+              height: MyAppSizes.sm,
             ),
             Text(
               'Sun',
               style: TextStyle(
-                color: Color(0xFFFCF1F1),
+                color: MyAppColors.c2,
               ),
             )
           ],
@@ -29,13 +31,13 @@ class HomeDays extends StatelessWidget {
         Column(
           children: [
             Historybar(),
-            SizedBox(
-              height: 8,
+            const SizedBox(
+              height: MyAppSizes.sm,
             ),
             Text(
               'Mon',
               style: TextStyle(
-                color: Color(0xFFFCF1F1),
+                color: MyAppColors.c2,
               ),
             )
           ],
@@ -45,13 +47,13 @@ class HomeDays extends StatelessWidget {
         Column(
           children: [
             Historybar(),
-            SizedBox(
-              height: 8,
+            const SizedBox(
+              height: MyAppSizes.sm,
             ),
             Text(
               'Tue',
               style: TextStyle(
-                color: Color(0xFFFCF1F1),
+                color: MyAppColors.c2,
               ),
             )
           ],
@@ -61,13 +63,13 @@ class HomeDays extends StatelessWidget {
         Column(
           children: [
             Historybar(),
-            SizedBox(
-              height: 8,
+            const SizedBox(
+              height: MyAppSizes.sm,
             ),
             Text(
               'Wed',
               style: TextStyle(
-                color: Color(0xFFFCF1F1),
+                color: MyAppColors.c2,
               ),
             )
           ],
@@ -77,13 +79,13 @@ class HomeDays extends StatelessWidget {
         Column(
           children: [
             Historybar(),
-            SizedBox(
-              height: 8,
+            const SizedBox(
+              height: MyAppSizes.sm,
             ),
             Text(
               'Thu',
               style: TextStyle(
-                color: Color(0xFFFCF1F1),
+                color: MyAppColors.c2,
               ),
             )
           ],
@@ -93,13 +95,13 @@ class HomeDays extends StatelessWidget {
         Column(
           children: [
             Historybar(),
-            SizedBox(
-              height: 8,
+            const SizedBox(
+              height: MyAppSizes.sm,
             ),
             Text(
               'Fri',
               style: TextStyle(
-                color: Color(0xFFFCF1F1),
+                color: MyAppColors.c2,
               ),
             )
           ],
@@ -109,13 +111,13 @@ class HomeDays extends StatelessWidget {
         Column(
           children: [
             Historybar(),
-            SizedBox(
-              height: 8,
+            const SizedBox(
+              height: MyAppSizes.sm,
             ),
             Text(
               'Sat',
               style: TextStyle(
-                color: Color(0xFFFCF1F1),
+                color: MyAppColors.c2,
               ),
             )
           ],

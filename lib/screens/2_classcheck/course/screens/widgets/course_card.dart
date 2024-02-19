@@ -7,8 +7,10 @@ import 'package:workproject/screens/2_classcheck/course/screens/course_code.dart
 import 'package:workproject/features/personalization/controllers/user_controller/user_controller.dart';
 import 'package:workproject/screens/2_classcheck/course/screens/widgets/countdowntimer.dart';
 import 'package:workproject/screens/2_classcheck/course/screens/widgets/popup_confirm.dart';
+import 'package:workproject/screens/2_classcheck/course/screens/widgets/popupcode_confirm.dart';
 import 'package:workproject/utils/constants/colors.dart';
 import 'package:workproject/utils/device/device_utility.dart';
+import 'package:workproject/utils/theme/custom_themes/text_theme.dart';
 
 class CourseCard extends StatelessWidget {
   CourseCard({
@@ -31,7 +33,8 @@ class CourseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(CourseController());
     final userController = Get.put(UserController());
-    final String formattedDate = DateFormat('dd MMM yyyy-kk:mm').format(createdAt);
+    final String formattedDate =
+        DateFormat('dd MMM yyyy-kk:mm').format(createdAt);
     final currentUserID = userController.user.value.id;
     final bool isCreator = createdByID == currentUserID;
     // Using MediaQuery to get screen width
@@ -44,8 +47,8 @@ class CourseCard extends StatelessWidget {
         width: screenWidth,
         height: screenHeight / 7,
         decoration: BoxDecoration(
-          color: Color(0xFFF9813A),
-          borderRadius: BorderRadius.circular(16),
+          color: MyAppColors.c3,
+          borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,26 +63,19 @@ class CourseCard extends StatelessWidget {
                       children: [
                         Text(
                           name,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: Color(0xFFFCF1F1),
-                          ),
+                          style: MyAppTextTheme.lightTextTheme.headlineSmall
+                              ?.copyWith(color: MyAppColors.c1, fontSize: 20),
                           overflow: TextOverflow.ellipsis, // Handle long names
                         ),
                         Text(
                           'on ${formattedDate}',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Color(0xFFFCF1F1),
-                          ),
+                          style: MyAppTextTheme.lightTextTheme.labelLarge
+                              ?.copyWith(color: MyAppColors.c1),
                         ),
                         Text(
                           'By ${createdByName}',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Color(0xFFFCF1F1),
-                          ),
+                          style: MyAppTextTheme.lightTextTheme.labelLarge
+                              ?.copyWith(color: MyAppColors.c1),
                         ),
                       ],
                     ),
@@ -89,7 +85,7 @@ class CourseCard extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   child: Obx(() {
                     final status = controller.getCourseStatus(id);
-                    Color buttonColor = Colors.blue; // สีปุ่มเริ่มต้น
+                    Color buttonColor = MyAppColors.c5; // สีปุ่มเริ่มต้น
                     String buttonText = 'Check!'; // ข้อความปุ่มเริ่มต้น
                     if (status == 'Expired') {
                       buttonColor = Colors.red;
@@ -104,16 +100,10 @@ class CourseCard extends StatelessWidget {
                           SizedBox(
                             width: 50,
                             height: 50,
-                            child: ElevatedButton(
-                              child: Center(
-                                // This Center widget is technically redundant but added for emphasis
-                                child: Icon(Iconsax.eye, color: Color(0xFFFCF1F1)),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: MyAppColors.black,
-                                padding: EdgeInsets.zero, // Ensuring no extra padding is affecting the icon's position
-                              ),
-                              onPressed: () => navigateToClassCodeScreen(context),
+                            child: IconButton(
+                              icon: Icon(Iconsax.eye, color: MyAppColors.c4),
+                              onPressed: () =>
+                                  navigateToClassCodeScreen(context),
                             ),
                           ),
                         SizedBox(
@@ -128,17 +118,20 @@ class CourseCard extends StatelessWidget {
                                     if (status != 'Checked') {
                                       showDialog(
                                         context: context,
-                                        builder: (BuildContext context) => PopupConfirm(id: id),
+                                        builder: (BuildContext context) =>
+                                            classCode != null
+                                                ? PopupCodeConfirm(id: id)
+                                                : PopupConfirm(id: id),
                                       );
                                     }
                                   }
                                 : null,
                             child: Text(
                               buttonText,
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Color(0xFFFCF1F1),
-                              ),
+                              style: MyAppTextTheme.lightTextTheme.labelLarge
+                                  ?.copyWith(
+                                      color: MyAppColors.c1,
+                                      fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
@@ -152,10 +145,7 @@ class CourseCard extends StatelessWidget {
               startTime: createdAt,
               endTime: createdAt.add(Duration(minutes: durationMinutes)),
               onTimerFinish: () {
-                // Properly call a method to update the status
-                controller.updateCourseStatus(
-                    id, 'Expired'); // Assuming this method exists and properly updates the course status
-                print('Timer finished! Status updated to Expired.');
+                controller.updateCourseStatus(id, 'Expired');
               },
             ),
           ],

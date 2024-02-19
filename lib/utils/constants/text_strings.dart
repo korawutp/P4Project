@@ -3,10 +3,11 @@ class MyAppText {
   // Example:
 
   // -- App Name
-  static const String appName = 'Flutter Starter';
+  static const String appName = 'ClassCheck';
 
   // -- App Description
-  static const String appDescription = 'A starter kit for beginner learns with all the basic necessary features.';
+  static const String appDescription =
+      'A starter kit for beginner learns with all the basic necessary features.';
 
   // -- App Version
   static const String appVersion = '1.0.0';
@@ -15,19 +16,20 @@ class MyAppText {
   static const String appAuthor = 'Flutter Starter';
 
   // -- Onboarding Titles
-  static const String onBoardingTitle1 = 'Onboarding Title 1';
+  static const String onBoardingTitle1 = 'ClassCheck application';
   static const String onBoardingSubTitle1 =
-      'Onboarding Subtitle 1 - Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
-  static const String onBoardingTitle2 = 'Onboarding Title 2';
+      'Welcome to ClassCheck - This Application will help you manage your class attendance taking efficiently. fast and easy-to-use';
+  static const String onBoardingTitle2 = 'Permission required';
   static const String onBoardingSubTitle2 =
-      'Onboarding Subtitle 2 - Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
-  static const String onBoardingTitle3 = 'Onboarding Title 3';
+      'Need a little information - To ensure your attendance is marked accurately. Your location data stays private and is used solely for attendance verification.';
+  static const String onBoardingTitle3 = "Let's get started!";
   static const String onBoardingSubTitle3 =
-      'Onboarding Subtitle 3 - Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
+      "Now that you're all set - You're ready to dive into ClassCheck! We're excited to have you on board and look forward to enhancing your experience.";
 
   // -- Login
-  static const String loginTitle = 'Welcome back!';
-  static const String loginSubTitle = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
+  static const String loginTitle = 'Welcome!';
+  static const String loginSubTitle =
+      'Welcome to ClassCheck application. Please enter your email & password';
   static const String email = 'Email';
   static const String emailHint = 'Enter your email';
   static const String password = 'Password';
@@ -50,6 +52,8 @@ class MyAppText {
   static const String and = 'and';
   static const String termsOfUse = 'Terms of Use';
   static const String orSignUpWith = 'Or Sign Up With';
+
+  // -- Verify
   static const String verifyEmail = 'Verify your email address';
   static const String verifyEmailSubTitle =
       'Congratulations! You have successfully created your account. Please check your email to verify your account. If you have not received the email, please check your spam folder.';
@@ -58,6 +62,8 @@ class MyAppText {
   static const String yourAccountCreatedTitle = 'Your account has been created';
   static const String yourAccountCreatedSubTitle =
       'Congratulations! Your account has been created successfully. You can now login to your account.';
+
+  // -- Forgot
   static const String forgotPasswordTitle = 'Forgot Password';
   static const String forgotPasswordSubTitle =
       'Something went wrong? Don\'t worry, we will send you a link to reset your password. Please enter your email address below.';
@@ -66,6 +72,26 @@ class MyAppText {
   static const String resetPasswordTitle = 'Password Reset Email Sent';
   static const String resetPasswordSubTitle =
       "Your account security is our priority! We've sent you a secure link to safely change your password and keep your account protected.";
+
+  // -- Home
+  static const String searchCourse = 'Search your courses';
+  static const String howWasYourClass = 'How was your class today?';
+  static const String enrolledClass = "Let's see your enrolled class";
+
+  // -- Course
+  static const String popupTitle = 'Is that you?';
+  static const String popupSubTitle1 =
+      'Check your class and I hope you have a wonderful day!';
+  static const String popupSubTitle2 =
+      "Please enter the code below.\nIf you've filled complete, I hope you have a wonderful day!";
+  static const String addCourseTitle = 'Add New Course';
   static const String courseName = 'Course Name';
-  static const String duration  = 'Duration (Minutes)';
+  static const String duration = 'Duration (Minutes)';
+  static const String addCourseSubTitle =
+      'Create a new course for students to attend in the classroom.';
+  static const String generateCode = 'Generate class code (If you need)';
+  static const String classCode = 'Class Code:';
+  static const String courseTitle = 'Available Courses';
+  static const String noCourseFound =
+      'No courses found or all courses expired...';
 }
