@@ -266,12 +266,6 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "fluid_dialog",
-      "rootUri": "file:///C:/Users/koraw/AppData/Local/Pub/Cache/hosted/pub.dev/fluid_dialog-2.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.18"
-    },
-    {
       "name": "flutter",
       "rootUri": "file:///C:/dev/flutter/packages/flutter",
       "packageUri": "lib/",
@@ -884,7 +878,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-02-22T08:15:10.696587Z",
+  "generated": "2024-02-22T08:46:13.838453Z",
   "generator": "pub",
   "generatorVersion": "3.2.2"
 }

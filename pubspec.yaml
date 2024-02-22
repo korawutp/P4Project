@@ -29,7 +29,6 @@ dependencies:
   calendar_timeline_sbk: ^1.1.7
   giffy_dialog: ^2.0.0+2
   pinput: ^4.0.0
-  fluid_dialog: ^2.0.0
 
   # Icons
   iconsax: ^0.0.8
