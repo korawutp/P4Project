@@ -7,6 +7,7 @@ import 'package:workproject/screens/2_classcheck/course/models/course_model.dart
 import 'package:workproject/screens/2_classcheck/course/screens/course_add.dart';
 import 'package:workproject/screens/2_classcheck/course/screens/widgets/course_card.dart';
 import 'package:workproject/utils/constants/colors.dart';
+import 'package:workproject/utils/constants/image_strings.dart';
 import 'package:workproject/utils/constants/sizes.dart';
 import 'package:workproject/utils/constants/text_strings.dart';
 
@@ -48,7 +49,7 @@ class CourseScreen extends StatelessWidget {
                 child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Lottie.asset('assets/images/home_images/meow_loading.json', height: 150, width: 150),
+                Lottie.asset(MyAppImage.meowLoading, height: 150, width: 150),
                 const SizedBox(
                   height: MyAppSizes.defaultSpace,
                 ),
