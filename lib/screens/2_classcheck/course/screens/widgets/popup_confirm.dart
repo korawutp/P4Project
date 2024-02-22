@@ -29,11 +29,14 @@ class PopupConfirm extends StatelessWidget {
       ),
       actions: [
         TextButton(
-          onPressed: () => Get.close(1),
+          onPressed: () => Get.back(),
           child: const Text('CANCEL'),
         ),
         TextButton(
-          onPressed: () => controller.attemptToAccessCourse(id),
+          onPressed: () {
+            controller.attemptToAccessCourse(id);
+            Get.back();
+          },
           child: const Text('OK'),
         ),
       ],

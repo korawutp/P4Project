@@ -47,8 +47,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
               child: CalendarTimeline(
                 showYears: true,
                 initialDate: _selectedDate,
-                firstDate:
-                    DateTime.now().subtract(const Duration(days: 365 * 2)),
+                firstDate: DateTime.now().subtract(const Duration(days: 365 * 2)),
                 lastDate: DateTime.now().add(const Duration(days: 365 * 2)),
                 onDateSelected: (date) => setState(() => _selectedDate = date),
                 monthColor: MyAppColors.c2,
@@ -86,40 +85,29 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       itemBuilder: (context, index) {
                         final course = snapshot.data![index];
                         return Card(
-                          margin: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 5),
+                          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                           child: ListTile(
-                            tileColor: MyAppColors
-                                .c1, // Adjust the tile background color
-                            leading: Icon(Icons.book,
-                                color: MyAppColors.c3), // Example icon
+                            tileColor: MyAppColors.c1, // Adjust the tile background color
+                            leading: Icon(Icons.book, color: MyAppColors.c3), // Example icon
                             title: Text(
                               course.courseName,
-                              style: TextStyle(
-                                  color: MyAppColors.c2), // Custom text color
+                              style: TextStyle(color: MyAppColors.c2), // Custom text color
                             ),
                             subtitle: Text(
                               'By ${course.createdByName}',
-                              style: TextStyle(
-                                  color: MyAppColors.c2.withOpacity(
-                                      0.7)), // Custom subtitle style
+                              style: TextStyle(color: MyAppColors.c2.withOpacity(0.7)), // Custom subtitle style
                             ),
-                            trailing: Icon(Iconsax.printer,
-                                color: MyAppColors.c5), // Trailing icon
+                            trailing: Icon(Iconsax.printer, color: MyAppColors.c5), // Trailing icon
                             onTap: () async {
-                              final students = await courseRepository
-                                  .fetchStudentsByCourseId(course.id);
-                              await createAndDisplayPdf(
-                                  context, students, course.courseName);
+                              final students = await courseRepository.fetchStudentsByCourseId(course.id);
+                              await createAndDisplayPdf(context, students, course.courseName);
                             },
                           ),
                           shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(10), // Card corner radius
+                            borderRadius: BorderRadius.circular(10), // Card corner radius
                           ),
                           elevation: 5, // Card elevation
-                          shadowColor: MyAppColors.c2
-                              .withOpacity(0.8), // Card shadow color
+                          shadowColor: MyAppColors.c2.withOpacity(0.8), // Card shadow color
                         );
                       },
                     );

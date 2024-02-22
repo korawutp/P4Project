@@ -12,17 +12,17 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.lightTheme,
       initialBinding: GeneralBindings(),
 
       /// Show Loader or Circular Progress Indicator meanwhile Authentication Repository is deciding to show relevant screen.
-      home: const Scaffold(
-        backgroundColor: MyAppColors.white,
+      home: Scaffold(
+        backgroundColor: MyAppColors.c1,
         body: Center(
           child: CircularProgressIndicator(
-            color: MyAppColors.white,
+            color: MyAppColors.c1,
           ),
         ),
       ),

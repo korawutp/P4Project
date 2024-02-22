@@ -5,6 +5,7 @@ import 'package:workproject/features/authentication/screens/onboarding/widgets/o
 import 'package:workproject/features/authentication/screens/onboarding/widgets/onboarding_next_button.dart';
 import 'package:workproject/features/authentication/screens/onboarding/widgets/onboarding_page.dart';
 import 'package:workproject/features/authentication/screens/onboarding/widgets/onboarding_skip.dart';
+import 'package:workproject/utils/constants/colors.dart';
 import 'package:workproject/utils/constants/image_strings.dart';
 import 'package:workproject/utils/constants/text_strings.dart';
 
@@ -16,6 +17,7 @@ class OnBoardingScreen extends StatelessWidget {
     final controller = Get.put(OnBoardingController());
 
     return Scaffold(
+      backgroundColor: MyAppColors.c1,
       body: Stack(
         children: [
           // Horizontal Scrollable Pages

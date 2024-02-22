@@ -120,7 +120,7 @@ class CourseCard extends StatelessWidget {
                                         context: context,
                                         builder: (BuildContext context) =>
                                             classCode != null
-                                                ? PopupCodeConfirm(id: id)
+                                                ? PopupCodeConfirm(id: id,)
                                                 : PopupConfirm(id: id),
                                       );
                                     }

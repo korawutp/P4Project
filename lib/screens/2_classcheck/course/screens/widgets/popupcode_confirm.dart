@@ -1,25 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
-import 'package:workproject/screens/2_classcheck/course/controllers/course_controller.dart';
 import 'package:pinput/pinput.dart';
+import 'package:workproject/screens/2_classcheck/course/controllers/course_controller.dart';
 import 'package:workproject/utils/constants/colors.dart';
 import 'package:workproject/utils/constants/sizes.dart';
 import 'package:workproject/utils/constants/text_strings.dart';
 
-class PopupCodeConfirm extends StatelessWidget {
-  const PopupCodeConfirm({super.key, required this.id});
+class PopupCodeConfirm extends StatefulWidget {
+  const PopupCodeConfirm({Key? key, required this.id}) : super(key: key);
 
   final id;
 
   @override
+  _PopupCodeConfirmState createState() => _PopupCodeConfirmState();
+}
+
+class _PopupCodeConfirmState extends State<PopupCodeConfirm> {
+  final TextEditingController _codeController = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
-    final controller = Get.put(CourseController());
+    final CourseController controller = Get.put(CourseController());
     final defaultPinTheme = PinTheme(
         width: 40,
         height: 44,
         textStyle: const TextStyle(
-            fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+          color: MyAppColors.c2,
+        ),
         decoration: BoxDecoration());
     final cursor = Column(
       mainAxisAlignment: MainAxisAlignment.end,
@@ -70,10 +80,10 @@ class PopupCodeConfirm extends StatelessWidget {
               height: MyAppSizes.sm,
             ),
             Pinput(
+              defaultPinTheme: defaultPinTheme,
+              controller: _codeController,
               length: 6,
               pinAnimationType: PinAnimationType.fade,
-              defaultPinTheme: defaultPinTheme,
-              onCompleted: (pin) => debugPrint(pin),
               showCursor: true,
               cursor: cursor,
               preFilledWidget: preFilledWidget,
@@ -83,14 +93,24 @@ class PopupCodeConfirm extends StatelessWidget {
       ),
       actions: [
         TextButton(
-          onPressed: () => Get.close(1),
+          onPressed: () => Get.back(),
           child: const Text('CANCEL'),
         ),
         TextButton(
-          onPressed: () => controller.attemptToAccessCourse(id),
+          onPressed: () {
+            print(_codeController.text);
+            controller.attemptToAccessCourseWithCode(widget.id, _codeController.text);
+            Get.back();
+          },
           child: const Text('OK'),
         ),
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    _codeController.dispose();
+    super.dispose();
   }
 }

@@ -29,6 +29,7 @@ class CourseController extends GetxController {
 
   final isClassCodeEnabled = false.obs;
   final classCode = ''.obs;
+  RxBool hasNewCourse = false.obs;
 
   @override
   void onInit() {
@@ -37,14 +38,21 @@ class CourseController extends GetxController {
     fetchCoursesList();
   }
 
+  void listenToNewCourses() {
+    FirebaseFirestore.instance.collection('courses').snapshots().listen((snapshot) {
+      // Assuming 'hasNewCourse' is a RxBool in your controller
+      // This is a simple example; you might want to refine the logic
+      // to only trigger for new additions.
+      hasNewCourse.value = true;
+    });
+  }
+
   /// Fetch course record
   Future<void> fetchCoursesList() async {
     courseLoading.value = true;
     try {
-      final courses = await courseRepository.fetchCourseList(); // Ensure this is returning List<Course> or similar
-      for (var course in courses) {
-        await getStudentCheckedStatus(course.id); // Assuming each course has an 'id' field
-      }
+      final courses = await courseRepository.fetchCourseList();
+
       courseList.value = courses;
     } catch (e) {
       MyAppLoader.errorSnackBar(title: 'Error', message: "Cannot fetch courses: $e");
@@ -53,25 +61,115 @@ class CourseController extends GetxController {
     }
   }
 
+  // Function to filter active courses
+  List<CourseModel> getActiveCourses() {
+    final DateTime thirtyMinutesAgo = DateTime.now().subtract(Duration(minutes: 60));
+    var activeCourses = courseList.value.where((course) {
+      DateTime expireTime = course.createdAt.add(Duration(minutes: course.durationMinutes));
+      return expireTime.isAfter(thirtyMinutesAgo);
+    }).toList()
+      ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
+
+    return activeCourses;
+  }
+
   Future<void> getStudentCheckedStatus(courseId) async {
     try {
-      // Assuming controller.user.value.studentID is available and valid
       CollectionReference studentsRef =
           FirebaseFirestore.instance.collection('Courses').doc(courseId).collection('Students');
       final querySnapshot = await studentsRef.where('StudentID', isEqualTo: controller.user.value.studentID).get();
       if (querySnapshot.docs.isNotEmpty) {
-        updateCourseStatus(courseId, 'Checked'); // Ensure this function is async and properly implemented
+        updateCourseStatus(courseId, 'Checked');
       }
     } catch (e) {
-      print("Error checking student status in course $courseId: $e");
-      // Consider handling the error more gracefully, depending on your app's requirements
+      // MyAppLoader.errorSnackBar(title: 'Error', message: "Error checking student status for course${courseId}: $e");
+      throw Exception("Error checking student status for course $courseId: $e");
+    }
+  }
+
+  void updateCourseStatus(String id, String newStatus) {
+    if (courseStatuses.containsKey(id)) {
+      courseStatuses[id]!.value = newStatus;
+    } else {
+      courseStatuses[id] = RxString(newStatus);
     }
   }
 
   void attemptToAccessCourse(String courseId) async {
-    Get.close(1);
-    bool canAccessWifi = await canAccessCheckWifi(courseId);
+    // Fetch course status (assuming you have a method to do this)
+    String courseStatus = getCourseStatus(courseId);
 
+    // Check if the course status is "expired"
+    if (courseStatus == 'Expired') {
+      MyAppLoader.errorSnackBar(
+        title: 'Check-in Failed',
+        message: "This course is expired and no longer accepts check-ins.",
+      );
+      return; // Exit the method to prevent further execution.
+    }
+    final doc = await FirebaseFirestore.instance.collection('Courses').doc(courseId).get();
+    if (!doc.exists) {
+      MyAppLoader.errorSnackBar(title: 'Error', message: "Course not found.");
+      return;
+    }
+
+    bool canAccessWifi = await canAccessCheckWifi(courseId);
+    if (canAccessWifi) {
+      // อ้างอิงไปยังคอลเลกชัน Students ในคอร์สนั้นๆ
+      CollectionReference studentsRef =
+          FirebaseFirestore.instance.collection('Courses').doc(courseId).collection('Students');
+      final querySnapshot = await studentsRef.where('StudentID', isEqualTo: controller.user.value.studentID).get();
+      if (querySnapshot.docs.isEmpty) {
+        await studentsRef.add({
+          'StudentID': controller.user.value.studentID,
+          'StudentName': controller.user.value.fullName,
+          'CheckedInAt': Timestamp.fromDate(DateTime.now()),
+        });
+        MyAppLoader.successSnackBar(title: 'Success', message: 'You have successfully checked attendance in class.!');
+        updateCourseStatus(courseId, 'Checked'); // อัปเดตสถานะเป็น 'Checked'
+      } else {
+        MyAppLoader.warningSnackBar(
+            title: 'Already checked', message: "You have already checked attendance in this class.!");
+      }
+    } else {
+      MyAppLoader.errorSnackBar(
+          title: 'Access Denied',
+          message: "You must be connected to the same WiFi as the instructor to access this course.");
+    }
+  }
+
+  void attemptToAccessCourseWithCode(String courseId, String enteredClassCode) async {
+    // Fetch course status (assuming you have a method to do this)
+    String courseStatus = getCourseStatus(courseId);
+
+    // Check if the course status is "expired"
+    if (courseStatus == 'Expired') {
+      MyAppLoader.errorSnackBar(
+        title: 'Check-in Failed',
+        message: "This course is expired and no longer accepts check-ins.",
+      );
+      return; // Exit the method to prevent further execution.
+    }
+
+    final doc = await FirebaseFirestore.instance.collection('Courses').doc(courseId).get();
+    if (!doc.exists) {
+      MyAppLoader.errorSnackBar(title: 'Error', message: "Course not found.");
+      return;
+    }
+
+    final String? classCode = doc.data()?['ClassCode'];
+    // Check if a class code is required and if the entered code matches
+    if (classCode != null && classCode.isNotEmpty) {
+      if (enteredClassCode != classCode) {
+        MyAppLoader.errorSnackBar(
+          title: 'Access Denied',
+          message: "Incorrect class code. Please try again.",
+        );
+        return;
+      }
+    }
+
+    bool canAccessWifi = await canAccessCheckWifi(courseId);
     if (canAccessWifi) {
       // อ้างอิงไปยังคอลเลกชัน Students ในคอร์สนั้นๆ
       CollectionReference studentsRef =
@@ -98,23 +196,37 @@ class CourseController extends GetxController {
 
   Future<bool> canAccessCheckWifi(String courseId) async {
     final info = NetworkInfo();
-    final wifiSSID = await info.getWifiName(); // SSID ที่เชื่อมต่ออยู่
-    final wifiSubmask = await info.getWifiSubmask(); // Submask
+    final wifiSSID = await info.getWifiName();
+    final wifiSubmask = await info.getWifiSubmask();
+
+    if (wifiSSID == null || wifiSubmask == null) {
+      MyAppLoader.errorSnackBar(title: 'Warning', message: "You are not connected to WiFi.");
+      return false;
+    }
 
     final doc = await _db.collection('Courses').doc(courseId).get();
 
-    if (doc.exists && wifiSSID != null && wifiSubmask != null) {
-      final courseWifiSSID = doc.data()?['WifiSSID'];
-      final courseWifiSubmask = doc.data()?['WifiSubmask'];
-      return courseWifiSSID == wifiSSID && courseWifiSubmask == wifiSubmask;
-    } else {
-      MyAppLoader.errorSnackBar(
-          title: 'Warning', message: "Cannot access WiFi data. Make sure you are connected to WiFi.");
+    if (!doc.exists) {
+      MyAppLoader.errorSnackBar(title: 'Error', message: "Course not found.");
       return false;
     }
+
+    final courseWifiSSID = doc.data()?['WifiSSID'];
+    final courseWifiSubmask = doc.data()?['WifiSubmask'];
+    if (courseWifiSSID != wifiSSID || courseWifiSubmask != wifiSubmask) {
+      MyAppLoader.errorSnackBar(
+          title: 'Access Denied', message: "Your WiFi connection does not match the course requirements.");
+      return false;
+    }
+
+    return true;
   }
 
   Future<void> addCourse(String createdByID, String createdByName) async {
+    if (!courseAddFormKey.currentState!.validate()) {
+      MyAppLoader.errorSnackBar(title: 'Invalid Form', message: "Please fill all required fields correctly.");
+      return;
+    }
     try {
       // Start Loading
       MyAppFullScreenLoader.openLoadingDialog('Processing...', MyAppImage.loadingAnimation);
@@ -133,11 +245,6 @@ class CourseController extends GetxController {
       if (wifiSSID == null || wifiSubmask == null) {
         MyAppLoader.errorSnackBar(
             title: 'Warning', message: "Cannot access WiFi data. Make sure you are connected to WiFi.");
-        return;
-      }
-      if (!courseAddFormKey.currentState!.validate()) {
-        // Remove Loader
-        MyAppFullScreenLoader.stopLoading();
         return;
       }
 
@@ -183,14 +290,6 @@ class CourseController extends GetxController {
     final wifiSubmask = await info.getWifiSubmask(); // Submask
     print(wifiSSID);
     print(wifiSubmask);
-  }
-
-  void updateCourseStatus(String id, String newStatus) {
-    if (courseStatuses.containsKey(id)) {
-      courseStatuses[id]!.value = newStatus;
-    } else {
-      courseStatuses[id] = RxString(newStatus);
-    }
   }
 
   String getCourseStatus(String id) {
