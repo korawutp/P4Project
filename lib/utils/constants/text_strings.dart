@@ -79,7 +79,7 @@ class MyAppText {
   static const String enrolledClass = "Let's see your classes";
 
   // -- Course
-  static const String popupTitle = 'Is that you?';
+  static const String popupTitle = 'Grandma is watching you!';
   static const String popupSubTitle1 =
       'Check your class and I hope you have a wonderful day!';
   static const String popupSubTitle2 =

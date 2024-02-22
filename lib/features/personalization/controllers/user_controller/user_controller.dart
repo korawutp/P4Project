@@ -6,7 +6,7 @@ import 'package:workproject/data/repository/authentication/authentication_reposi
 import 'package:workproject/data/repository/user/user_repository.dart';
 import 'package:workproject/features/authentication/screens/login/login.dart';
 import 'package:workproject/features/personalization/models/user_model.dart';
-import 'package:workproject/features/personalization/screens/edit_profile/widgets/re_authenticate_user_login_form.dart';
+import 'package:workproject/features/personalization/screens/view_profile/widgets/re_authenticate_user_login_form.dart';
 import 'package:workproject/utils/constants/image_strings.dart';
 import 'package:workproject/utils/constants/sizes.dart';
 import 'package:workproject/utils/helpers/network_manager.dart';

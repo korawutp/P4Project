@@ -8,6 +8,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "animations",
+      "rootUri": "file:///C:/Users/koraw/AppData/Local/Pub/Cache/hosted/pub.dev/animations-2.0.11",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
       "name": "ansicolor",
       "rootUri": "file:///C:/Users/koraw/AppData/Local/Pub/Cache/hosted/pub.dev/ansicolor-2.0.2",
       "packageUri": "lib/",
@@ -878,7 +884,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-02-22T04:56:07.542039Z",
+  "generated": "2024-02-22T08:15:10.696587Z",
   "generator": "pub",
   "generatorVersion": "3.2.2"
 }

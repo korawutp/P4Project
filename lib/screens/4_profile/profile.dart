@@ -4,7 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:workproject/common/widgets/circular_image/circular_image.dart';
 import 'package:workproject/common/widgets/shimmer/shimmer.dart';
 import 'package:workproject/features/personalization/controllers/user_controller/user_controller.dart';
-import 'package:workproject/features/personalization/screens/edit_profile/edit_profile.dart';
+import 'package:workproject/features/personalization/screens/view_profile/view_profile.dart';
 import 'package:workproject/utils/constants/colors.dart';
 import 'package:workproject/utils/constants/image_strings.dart';
 import 'package:workproject/utils/constants/sizes.dart';
@@ -15,141 +15,105 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(UserController());
+    // It's a good practice to separate your business logic and UI by not initializing controllers directly inside build methods.
+    final UserController controller = Get.find<
+        UserController>(); // Consider using Get.find instead of Get.put if the controller is initialized elsewhere.
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          // Header
-          SliverAppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: MyAppColors.c1,
-            expandedHeight: MyAppHelperFunctions.screenHeight() * 0.3,
-            floating: false,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Container(
-                color: MyAppColors.c3,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Obx(() {
-                      final networkImage = controller.user.value.profilePicture;
-                      final image = networkImage.isNotEmpty
-                          ? networkImage
-                          : MyAppImage.profile;
-                      return MyAppCircularImage(
-                        image: image,
-                        width: 100,
-                        height: 100,
-                        isNetworkImage: networkImage.isNotEmpty,
-                      );
-                    }),
-                    SizedBox(
-                        height: MyAppSizes
-                            .sm), // Add some space between the avatar and text
-                    Obx(() {
-                      if (controller.profileLoading.value) {
-                        // Display a shimmer effect loader while user profile is being loaded.
-                        return const MyAppShimmerEffect(
-                            width: 100, height: 100);
-                      } else {
-                        return Column(
-                          children: [
-                            Text(
-                              controller.user.value.fullName,
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: MyAppColors.c1,
-                              ),
-                            ),
-                            Text(
-                              controller.user.value.studentID,
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: MyAppColors.c1,
-                              ),
-                            ),
-                          ],
-                        );
-                      }
-                    }),
-                  ],
-                ),
-              ),
-            ),
-          ),
-
-          // make some space between the header and body
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: MyAppHelperFunctions.screenHeight() * 0.03,
-            ),
-          ),
-
-          // Body
-          SliverList(
-            delegate: SliverChildListDelegate(
-              [
-                // Profile Button
-                ListTile(
-                    leading: Icon(Iconsax.user_edit),
-                    title: Text('Edit Profile'),
-                    onTap: () => Get.to(() => const EditProfileScreen())),
-
-                // Settings Button
-                ListTile(
-                  leading: Icon(Iconsax.setting_2),
-                  title: Text('Settings'),
-                  onTap: () {
-                    // Handle settings button tap
-                    // Navigate to settings screen or perform other actions
-                  },
-                ),
-
-                // Logout Button
-                ListTile(
-                  leading: Icon(Iconsax.logout),
-                  title: Text('Logout'),
-                  onTap: () => controller.logoutAccount(),
-                ),
-              ],
-            ),
-          ),
+          _buildProfileHeader(controller),
+          _buildSpaceBetweenHeaderAndBody(),
+          _buildProfileMenu(),
         ],
       ),
     );
   }
-}
 
-Widget buildProfileButton(String title, IconData icon) {
-  return Card(
-    elevation: 4.0,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(8.0),
-    ),
-    child: InkWell(
-      onTap: () {
-        // Handle button tap
-        if (title == 'Edit Profile') {
-          // Handle Edit Profile button tap
-        } else if (title == 'Settings') {
-          // Handle Settings button tap
-        } else if (title == 'Logout') {
-          // Handle Logout button tap
-        }
-      },
+  SliverAppBar _buildProfileHeader(UserController controller) {
+    return SliverAppBar(
+      automaticallyImplyLeading: false,
+      backgroundColor: MyAppColors.c1,
+      expandedHeight: MyAppHelperFunctions.screenHeight() * 0.3,
+      flexibleSpace: FlexibleSpaceBar(
+        background: _buildHeaderContent(controller),
+      ),
+    );
+  }
+
+  Container _buildHeaderContent(UserController controller) {
+    return Container(
+      color: MyAppColors.c3,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon),
-          SizedBox(height: 8.0),
-          Text(
-            title,
-            style: TextStyle(fontSize: 14.0),
-            textAlign: TextAlign.center,
-          ),
+          _buildUserProfileImage(controller),
+          SizedBox(height: MyAppSizes.sm),
+          _buildUserDetails(controller),
         ],
       ),
-    ),
-  );
+    );
+  }
+
+  Widget _buildUserProfileImage(UserController controller) {
+    return Obx(() {
+      final String profileImageUrl =
+          controller.user.value.profilePicture.isNotEmpty ? controller.user.value.profilePicture : MyAppImage.profile;
+      return MyAppCircularImage(
+        image: profileImageUrl,
+        width: 100,
+        height: 100,
+        isNetworkImage: controller.user.value.profilePicture.isNotEmpty,
+      );
+    });
+  }
+
+  Widget _buildUserDetails(UserController controller) {
+    return Obx(() {
+      if (controller.profileLoading.value) {
+        return const MyAppShimmerEffect(width: 100, height: 20);
+      } else {
+        return Column(
+          children: [
+            Text(controller.user.value.fullName,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: MyAppColors.c1)),
+            Text(controller.user.value.studentID, style: TextStyle(fontSize: 14, color: MyAppColors.c1)),
+          ],
+        );
+      }
+    });
+  }
+
+  SliverToBoxAdapter _buildSpaceBetweenHeaderAndBody() {
+    return SliverToBoxAdapter(
+      child: SizedBox(height: MyAppHelperFunctions.screenHeight() * 0.03),
+    );
+  }
+
+  SliverList _buildProfileMenu() {
+    return SliverList(
+      delegate: SliverChildListDelegate([
+        _buildProfileButton('View profile', Iconsax.user, ViewProfileScreen()),
+        _buildProfileButton('Settings', Iconsax.setting_2, null), // Replace null with your settings screen widget
+        _buildProfileButton('Logout', Iconsax.logout, null), // Add your logout logic here
+      ]),
+    );
+  }
+
+  Widget _buildProfileButton(String title, IconData icon, Widget? destination) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(title),
+      onTap: () {
+        if (destination != null) {
+          Get.to(() => destination);
+        } else {
+          // Handle null destination (e.g., Logout)
+          if (title == 'Logout') {
+            Get.find<UserController>().logoutAccount();
+          }
+        }
+      },
+    );
+  }
 }

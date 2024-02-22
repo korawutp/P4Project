@@ -29,6 +29,6 @@ class MyAppImage {
   static const String profile = 'assets/images/profile.png';
 
   // -- Animation
-  static const String loadingAnimation =
-      'assets/images/animations/loader-animation.json';
+  static const String loadingAnimation = 'assets/images/animations/loader-animation.json';
+  static const String meowLoading = 'assets/images/home_images/meow_loading.json';
 }
