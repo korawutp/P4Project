@@ -76,7 +76,7 @@ class MyAppText {
   // -- Home
   static const String searchCourse = 'Search your courses';
   static const String howWasYourClass = 'How was your class today?';
-  static const String enrolledClass = "Let's see your enrolled class";
+  static const String enrolledClass = "Let's see your classes";
 
   // -- Course
   static const String popupTitle = 'Is that you?';
@@ -93,5 +93,5 @@ class MyAppText {
   static const String classCode = 'Class Code:';
   static const String courseTitle = 'Available Courses';
   static const String noCourseFound =
-      'No courses found or all courses expired...';
+      "No courses found or all courses're expired...";
 }

@@ -16,6 +16,7 @@ class OnBoardingScreen extends StatelessWidget {
     final controller = Get.put(OnBoardingController());
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           // Horizontal Scrollable Pages

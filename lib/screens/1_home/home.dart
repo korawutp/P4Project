@@ -1,11 +1,8 @@
-//! popupnotification
-//! touchable mini_history
-
 import 'package:flutter/material.dart';
 import 'package:workproject/common/styles/spacing_styles.dart';
 import 'package:workproject/common/widgets/shimmer/shimmer.dart';
 import 'package:workproject/screens/1_home/widgets/home_classtile.dart';
-import 'package:workproject/screens/1_home/widgets/home_days.dart';
+import 'package:workproject/screens/1_home/widgets/home_moods.dart';
 import 'package:workproject/screens/1_home/widgets/home_searchbar.dart';
 import 'package:get/get.dart';
 import 'package:workproject/features/personalization/controllers/user_controller/user_controller.dart';
@@ -64,8 +61,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: MyAppSizes.sm,
                 ),
 
-                //* mini history
-                HomeDays(),
+                //* check ur mood
+                HomeMoods(),
 
                 const SizedBox(
                   height: MyAppSizes.defaultSpace,
@@ -159,17 +156,6 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             }
           },
-        ),
-        IconButton(
-          onPressed: () {},
-          style: IconButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            backgroundColor: MyAppColors.c2,
-            fixedSize: const Size(50, 50),
-          ),
-          icon: const Icon(Icons.notifications, color: MyAppColors.c1),
         ),
       ],
     );
