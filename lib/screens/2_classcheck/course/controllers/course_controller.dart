@@ -39,10 +39,7 @@ class CourseController extends GetxController {
   }
 
   void listenToNewCourses() {
-    FirebaseFirestore.instance
-        .collection('courses')
-        .snapshots()
-        .listen((snapshot) {
+    FirebaseFirestore.instance.collection('courses').snapshots().listen((snapshot) {
       // Assuming 'hasNewCourse' is a RxBool in your controller
       // This is a simple example; you might want to refine the logic
       // to only trigger for new additions.
@@ -58,8 +55,7 @@ class CourseController extends GetxController {
 
       courseList.value = courses;
     } catch (e) {
-      MyAppLoader.errorSnackBar(
-          title: 'Error', message: "Cannot fetch courses: $e");
+      MyAppLoader.errorSnackBar(title: 'Error', message: "Cannot fetch courses: $e");
     } finally {
       courseLoading.value = false;
     }
@@ -67,11 +63,9 @@ class CourseController extends GetxController {
 
   // Function to filter active courses
   List<CourseModel> getActiveCourses() {
-    final DateTime thirtyMinutesAgo =
-        DateTime.now().subtract(Duration(minutes: 60));
+    final DateTime thirtyMinutesAgo = DateTime.now().subtract(Duration(minutes: 60));
     var activeCourses = courseList.value.where((course) {
-      DateTime expireTime =
-          course.createdAt.add(Duration(minutes: course.durationMinutes));
+      DateTime expireTime = course.createdAt.add(Duration(minutes: course.durationMinutes));
       return expireTime.isAfter(thirtyMinutesAgo);
     }).toList()
       ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
@@ -81,13 +75,9 @@ class CourseController extends GetxController {
 
   Future<void> getStudentCheckedStatus(courseId) async {
     try {
-      CollectionReference studentsRef = FirebaseFirestore.instance
-          .collection('Courses')
-          .doc(courseId)
-          .collection('Students');
-      final querySnapshot = await studentsRef
-          .where('StudentID', isEqualTo: controller.user.value.studentID)
-          .get();
+      CollectionReference studentsRef =
+          FirebaseFirestore.instance.collection('Courses').doc(courseId).collection('Students');
+      final querySnapshot = await studentsRef.where('StudentID', isEqualTo: controller.user.value.studentID).get();
       if (querySnapshot.docs.isNotEmpty) {
         updateCourseStatus(courseId, 'Checked');
       }
@@ -117,10 +107,7 @@ class CourseController extends GetxController {
       );
       return; // Exit the method to prevent further execution.
     }
-    final doc = await FirebaseFirestore.instance
-        .collection('Courses')
-        .doc(courseId)
-        .get();
+    final doc = await FirebaseFirestore.instance.collection('Courses').doc(courseId).get();
     if (!doc.exists) {
       MyAppLoader.errorSnackBar(title: 'Error', message: "Course not found.");
       return;
@@ -129,38 +116,29 @@ class CourseController extends GetxController {
     bool canAccessWifi = await canAccessCheckWifi(courseId);
     if (canAccessWifi) {
       // อ้างอิงไปยังคอลเลกชัน Students ในคอร์สนั้นๆ
-      CollectionReference studentsRef = FirebaseFirestore.instance
-          .collection('Courses')
-          .doc(courseId)
-          .collection('Students');
-      final querySnapshot = await studentsRef
-          .where('StudentID', isEqualTo: controller.user.value.studentID)
-          .get();
+      CollectionReference studentsRef =
+          FirebaseFirestore.instance.collection('Courses').doc(courseId).collection('Students');
+      final querySnapshot = await studentsRef.where('StudentID', isEqualTo: controller.user.value.studentID).get();
       if (querySnapshot.docs.isEmpty) {
         await studentsRef.add({
           'StudentID': controller.user.value.studentID,
           'StudentName': controller.user.value.fullName,
           'CheckedInAt': Timestamp.fromDate(DateTime.now()),
         });
-        MyAppLoader.successSnackBar(
-            title: 'Success',
-            message: 'You have successfully checked attendance in class.!');
+        MyAppLoader.successSnackBar(title: 'Success', message: 'You have successfully checked attendance in class.!');
         updateCourseStatus(courseId, 'Checked'); // อัปเดตสถานะเป็น 'Checked'
       } else {
         MyAppLoader.warningSnackBar(
-            title: 'Already checked',
-            message: "You have already checked attendance in this class.!");
+            title: 'Already checked', message: "You have already checked attendance in this class.!");
       }
     } else {
       MyAppLoader.errorSnackBar(
           title: 'Access Denied',
-          message:
-              "You must be connected to the same WiFi as the instructor to access this course.");
+          message: "You must be connected to the same WiFi as the instructor to access this course.");
     }
   }
 
-  void attemptToAccessCourseWithCode(
-      String courseId, String enteredClassCode) async {
+  void attemptToAccessCourseWithCode(String courseId, String enteredClassCode) async {
     // Fetch course status (assuming you have a method to do this)
     String courseStatus = getCourseStatus(courseId);
 
@@ -173,10 +151,7 @@ class CourseController extends GetxController {
       return; // Exit the method to prevent further execution.
     }
 
-    final doc = await FirebaseFirestore.instance
-        .collection('Courses')
-        .doc(courseId)
-        .get();
+    final doc = await FirebaseFirestore.instance.collection('Courses').doc(courseId).get();
     if (!doc.exists) {
       MyAppLoader.errorSnackBar(title: 'Error', message: "Course not found.");
       return;
@@ -197,33 +172,25 @@ class CourseController extends GetxController {
     bool canAccessWifi = await canAccessCheckWifi(courseId);
     if (canAccessWifi) {
       // อ้างอิงไปยังคอลเลกชัน Students ในคอร์สนั้นๆ
-      CollectionReference studentsRef = FirebaseFirestore.instance
-          .collection('Courses')
-          .doc(courseId)
-          .collection('Students');
-      final querySnapshot = await studentsRef
-          .where('StudentID', isEqualTo: controller.user.value.studentID)
-          .get();
+      CollectionReference studentsRef =
+          FirebaseFirestore.instance.collection('Courses').doc(courseId).collection('Students');
+      final querySnapshot = await studentsRef.where('StudentID', isEqualTo: controller.user.value.studentID).get();
       if (querySnapshot.docs.isEmpty) {
         await studentsRef.add({
           'StudentID': controller.user.value.studentID,
           'StudentName': controller.user.value.fullName,
           'CheckedInAt': Timestamp.fromDate(DateTime.now()),
         });
-        MyAppLoader.successSnackBar(
-            title: 'Success',
-            message: 'You have successfully checked attendance in class.!');
+        MyAppLoader.successSnackBar(title: 'Success', message: 'You have successfully checked attendance in class.!');
         updateCourseStatus(courseId, 'Checked'); // อัปเดตสถานะเป็น 'Checked'
       } else {
         MyAppLoader.warningSnackBar(
-            title: 'Already checked',
-            message: "You have already checked attendance in this class.!");
+            title: 'Already checked', message: "You have already checked attendance in this class.!");
       }
     } else {
       MyAppLoader.errorSnackBar(
           title: 'Access Denied',
-          message:
-              "You must be connected to the same WiFi as the instructor to access this course.");
+          message: "You must be connected to the same WiFi as the instructor to access this course.");
     }
   }
 
@@ -233,8 +200,7 @@ class CourseController extends GetxController {
     final wifiSubmask = await info.getWifiSubmask();
 
     if (wifiSSID == null || wifiSubmask == null) {
-      MyAppLoader.errorSnackBar(
-          title: 'Warning', message: "You are not connected to WiFi.");
+      MyAppLoader.errorSnackBar(title: 'Warning', message: "You are not connected to WiFi.");
       return false;
     }
 
@@ -249,9 +215,7 @@ class CourseController extends GetxController {
     final courseWifiSubmask = doc.data()?['WifiSubmask'];
     if (courseWifiSSID != wifiSSID || courseWifiSubmask != wifiSubmask) {
       MyAppLoader.errorSnackBar(
-          title: 'Access Denied',
-          message:
-              "Your WiFi connection does not match the course requirements.");
+          title: 'Access Denied', message: "Your WiFi connection does not match the course requirements.");
       return false;
     }
 
@@ -260,15 +224,12 @@ class CourseController extends GetxController {
 
   Future<void> addCourse(String createdByID, String createdByName) async {
     if (!courseAddFormKey.currentState!.validate()) {
-      MyAppLoader.errorSnackBar(
-          title: 'Invalid Form',
-          message: "Please fill all required fields correctly.");
+      MyAppLoader.errorSnackBar(title: 'Invalid Form', message: "Please fill all required fields correctly.");
       return;
     }
     try {
       // Start Loading
-      MyAppFullScreenLoader.openLoadingDialog(
-          'Processing...', MyAppImage.loadingAnimation);
+      MyAppFullScreenLoader.openLoadingDialog('Processing...', MyAppImage.loadingAnimation);
 
       // Check Internet Activity
       final isConnected = await NetworkManager.instance.isConnected();
@@ -279,14 +240,11 @@ class CourseController extends GetxController {
 
       final info = NetworkInfo();
       final wifiSSID = await info.getWifiName(); // SSID : MyWifi
-      final wifiSubmask =
-          await info.getWifiSubmask(); // Submask : 255.255.255.0
+      final wifiSubmask = await info.getWifiSubmask(); // Submask : 255.255.255.0
 
       if (wifiSSID == null || wifiSubmask == null) {
         MyAppLoader.errorSnackBar(
-            title: 'Warning',
-            message:
-                "Cannot access WiFi data. Make sure you are connected to WiFi.");
+            title: 'Warning', message: "Cannot access WiFi data. Make sure you are connected to WiFi.");
         MyAppFullScreenLoader.stopLoading();
         return;
       }
@@ -296,15 +254,13 @@ class CourseController extends GetxController {
 
       if (durationValue == null) {
         // Handle the case where the duration is not a valid integer
-        MyAppLoader.errorSnackBar(
-            title: 'Invalid', message: "Duration must be a Integer number.");
+        MyAppLoader.errorSnackBar(title: 'Invalid', message: "Duration must be a Integer number.");
         MyAppFullScreenLoader.stopLoading();
         return;
       }
 
       // Generate class code if enabled
-      String? classCodeValue =
-          isClassCodeEnabled.value ? classCode.value : null;
+      String? classCodeValue = isClassCodeEnabled.value ? classCode.value : null;
 
       await _db.collection('Courses').add({
         'CourseName': courseName.text.trim(),
@@ -321,8 +277,7 @@ class CourseController extends GetxController {
       // Remove Loader
       MyAppFullScreenLoader.stopLoading();
       Get.close(1);
-      MyAppLoader.successSnackBar(
-          title: 'Success', message: 'Successfully added a course!');
+      MyAppLoader.successSnackBar(title: 'Success', message: 'Successfully added a course!');
     } catch (e) {
       // Remove Loader
       MyAppFullScreenLoader.stopLoading();
@@ -339,9 +294,7 @@ class CourseController extends GetxController {
   }
 
   String getCourseStatus(String id) {
-    return courseStatuses.containsKey(id)
-        ? courseStatuses[id]!.value
-        : 'Available';
+    return courseStatuses.containsKey(id) ? courseStatuses[id]!.value : 'Available';
   }
 
   void toggleClassCodeEnabled(bool isEnabled) {
@@ -354,4 +307,5 @@ class CourseController extends GetxController {
     final code = List.generate(6, (_) => rand.nextInt(10)).join();
     classCode.value = code;
   }
+
 }

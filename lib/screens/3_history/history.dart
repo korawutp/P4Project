@@ -1,8 +1,10 @@
 import 'package:calendar_timeline_sbk/calendar_timeline.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:workproject/data/repository/course/course_repository.dart';
+import 'package:workproject/features/personalization/controllers/user_controller/user_controller.dart';
 import 'package:workproject/screens/2_classcheck/course/models/course_model.dart';
 import 'package:workproject/utils/constants/colors.dart';
 import 'package:workproject/utils/constants/sizes.dart';
@@ -29,8 +31,47 @@ class _HistoryScreenState extends State<HistoryScreen> {
     _selectedDate = DateTime.now();
   }
 
+  /// Show a warning dialog before deleting a course
+  void deleteCourseWarningPopup(String id, DateTime dateTime) {
+    Get.defaultDialog(
+      contentPadding: const EdgeInsets.all(MyAppSizes.md),
+      title: 'Delete Course',
+      middleText:
+          'Are you sure you want to delete this course permanently? This action is not reversible and all of course data will be removed permanently.',
+      confirm: ElevatedButton(
+        onPressed: () {
+          deleteCourse(id, dateTime);
+          Navigator.of(Get.overlayContext!).pop(); // Close the dialog
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.red,
+          side: const BorderSide(color: Colors.red),
+        ),
+        child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: MyAppSizes.lg),
+          child: Text('Delete'),
+        ),
+      ),
+      cancel: OutlinedButton(
+        onPressed: () => Navigator.of(Get.overlayContext!).pop(),
+        child: const Text('Cancel'),
+      ),
+    );
+  }
+
+  /// Delete the course and refresh UI
+  Future<void> deleteCourse(String id, DateTime dateTime) async {
+    await FirebaseFirestore.instance.collection('Courses').doc(id).delete();
+
+    // Assuming this method is in a stateful widget, otherwise, you need to use another way to refresh or update the UI.
+    setState(() {
+      _selectedDate = dateTime;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final userController = Get.put(UserController());
     return Scaffold(
       backgroundColor: MyAppColors.c1,
       appBar: AppBar(
@@ -88,20 +129,32 @@ class _HistoryScreenState extends State<HistoryScreen> {
                           margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                           child: ListTile(
                             tileColor: MyAppColors.c1, // Adjust the tile background color
-                            leading: Icon(Icons.book, color: MyAppColors.c3), // Example icon
+                            leading: IconButton(
+                              icon: Icon(Iconsax.printer, color: MyAppColors.c3),
+                              onPressed: () async {
+                                final students = await courseRepository.fetchStudentsByCourseId(course.id);
+                                await createAndDisplayPdf(
+                                    context, students, course.courseName, course.createdAt, course.createdByName);
+                              },
+                            ), // Example icon
                             title: Text(
                               course.courseName,
                               style: TextStyle(color: MyAppColors.c2), // Custom text color
+                              overflow: TextOverflow.ellipsis,
                             ),
                             subtitle: Text(
                               'By ${course.createdByName}',
                               style: TextStyle(color: MyAppColors.c2.withOpacity(0.7)), // Custom subtitle style
+                              overflow: TextOverflow.ellipsis,
                             ),
-                            trailing: Icon(Iconsax.printer, color: MyAppColors.c5), // Trailing icon
-                            onTap: () async {
-                              final students = await courseRepository.fetchStudentsByCourseId(course.id);
-                              await createAndDisplayPdf(context, students, course.courseName);
-                            },
+                            trailing: userController.user.value.id == course.createdByID
+                                ? IconButton(
+                                    icon: Icon(Iconsax.trash, color: MyAppColors.c5),
+                                    onPressed: () {
+                                      deleteCourseWarningPopup(course.id, course.createdAt);
+                                    },
+                                  )
+                                : null,
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10), // Card corner radius
