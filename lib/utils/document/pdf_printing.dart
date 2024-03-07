@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 // import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
@@ -7,12 +8,15 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 import 'package:workproject/screens/2_classcheck/course/models/student_model.dart';
 
-Future<void> createAndDisplayPdf(BuildContext context, List<StudentModel> students, String courseName) async {
+Future<void> createAndDisplayPdf(
+    BuildContext context, List<StudentModel> students, String courseName, DateTime createdAt, String createdBy) async {
   final pdf = pw.Document();
   // final theme = pw.ThemeData.withFont(
   //   base: pw.Font.ttf(await rootBundle.load("assets/fonts/OpenSans-Regular.ttf")),
   //   bold: pw.Font.ttf(await rootBundle.load("assets/fonts/OpenSans-Bold.ttf")),
   // );
+
+  final String formattedCreatedAt = DateFormat('dd MMM yyyy-kk:mm').format(createdAt);
 
   pdf.addPage(
     pw.Page(
@@ -21,7 +25,12 @@ Future<void> createAndDisplayPdf(BuildContext context, List<StudentModel> studen
         return pw.Column(
           crossAxisAlignment: pw.CrossAxisAlignment.start,
           children: [
-            pw.Text(courseName, style: pw.TextStyle(fontSize: 24, fontWeight: pw.FontWeight.bold)),
+            pw.Text("Course Name: $courseName", style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold)),
+            pw.SizedBox(height: 10),
+            pw.Text("Created by $createdBy, On $formattedCreatedAt",
+                style: pw.TextStyle(
+                  fontSize: 12,
+                )),
             pw.SizedBox(height: 20),
             pw.Table(
               border: pw.TableBorder.all(),
@@ -37,6 +46,10 @@ Future<void> createAndDisplayPdf(BuildContext context, List<StudentModel> studen
                       padding: pw.EdgeInsets.all(8),
                       child: pw.Text('Student Name', style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
                     ),
+                    pw.Padding(
+                      padding: pw.EdgeInsets.all(8),
+                      child: pw.Text('Time Stamp', style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
+                    ),
                   ],
                 ),
                 ...students.map(
@@ -49,6 +62,11 @@ Future<void> createAndDisplayPdf(BuildContext context, List<StudentModel> studen
                       pw.Padding(
                         padding: pw.EdgeInsets.all(8),
                         child: pw.Text(student.studentName),
+                      ),
+                      pw.Padding(
+                        padding: pw.EdgeInsets.all(8),
+                        child: pw.Text(
+                            "${student.checkedInAt.hour}:${student.checkedInAt.minute}:${student.checkedInAt.second}"),
                       ),
                     ],
                   ),

@@ -65,7 +65,7 @@ class CourseCard extends StatelessWidget {
                           name,
                           style: MyAppTextTheme.lightTextTheme.headlineSmall
                               ?.copyWith(color: MyAppColors.c1, fontSize: 20),
-                          overflow: TextOverflow.ellipsis, // Handle long names
+                          overflow: TextOverflow.ellipsis,
                         ),
                         Text(
                           'on ${formattedDate}',
