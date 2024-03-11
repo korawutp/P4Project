@@ -39,7 +39,7 @@ class CourseController extends GetxController {
   }
 
   void listenToNewCourses() {
-    FirebaseFirestore.instance.collection('courses').snapshots().listen((snapshot) {
+    FirebaseFirestore.instance.collection('Courses').snapshots().listen((snapshot) {
       // Assuming 'hasNewCourse' is a RxBool in your controller
       // This is a simple example; you might want to refine the logic
       // to only trigger for new additions.
@@ -83,7 +83,7 @@ class CourseController extends GetxController {
       }
     } catch (e) {
       // MyAppLoader.errorSnackBar(title: 'Error', message: "Error checking student status for course${courseId}: $e");
-      throw Exception("Error checking student status for course $courseId: $e");
+      throw Exception("Error checking student status for class $courseId: $e");
     }
   }
 
@@ -103,13 +103,13 @@ class CourseController extends GetxController {
     if (courseStatus == 'Expired') {
       MyAppLoader.errorSnackBar(
         title: 'Check-in Failed',
-        message: "This course is expired and no longer accepts check-ins.",
+        message: "This class is expired and no longer accepts check-ins.",
       );
       return; // Exit the method to prevent further execution.
     }
     final doc = await FirebaseFirestore.instance.collection('Courses').doc(courseId).get();
     if (!doc.exists) {
-      MyAppLoader.errorSnackBar(title: 'Error', message: "Course not found.");
+      MyAppLoader.errorSnackBar(title: 'Error', message: "Class not found.");
       return;
     }
 
@@ -134,7 +134,7 @@ class CourseController extends GetxController {
     } else {
       MyAppLoader.errorSnackBar(
           title: 'Access Denied',
-          message: "You must be connected to the same WiFi as the instructor to access this course.");
+          message: "You must be connected to the same WiFi as the instructor to access this class.");
     }
   }
 
@@ -146,14 +146,14 @@ class CourseController extends GetxController {
     if (courseStatus == 'Expired') {
       MyAppLoader.errorSnackBar(
         title: 'Check-in Failed',
-        message: "This course is expired and no longer accepts check-ins.",
+        message: "This class is expired and no longer accepts check-ins.",
       );
       return; // Exit the method to prevent further execution.
     }
 
     final doc = await FirebaseFirestore.instance.collection('Courses').doc(courseId).get();
     if (!doc.exists) {
-      MyAppLoader.errorSnackBar(title: 'Error', message: "Course not found.");
+      MyAppLoader.errorSnackBar(title: 'Error', message: "Class not found.");
       return;
     }
 
@@ -190,7 +190,7 @@ class CourseController extends GetxController {
     } else {
       MyAppLoader.errorSnackBar(
           title: 'Access Denied',
-          message: "You must be connected to the same WiFi as the instructor to access this course.");
+          message: "You must be connected to the same WiFi as the instructor to access this class.");
     }
   }
 
@@ -207,7 +207,7 @@ class CourseController extends GetxController {
     final doc = await _db.collection('Courses').doc(courseId).get();
 
     if (!doc.exists) {
-      MyAppLoader.errorSnackBar(title: 'Error', message: "Course not found.");
+      MyAppLoader.errorSnackBar(title: 'Error', message: "Class not found.");
       return false;
     }
 
@@ -215,7 +215,7 @@ class CourseController extends GetxController {
     final courseWifiSubmask = doc.data()?['WifiSubmask'];
     if (courseWifiSSID != wifiSSID || courseWifiSubmask != wifiSubmask) {
       MyAppLoader.errorSnackBar(
-          title: 'Access Denied', message: "Your WiFi connection does not match the course requirements.");
+          title: 'Access Denied', message: "Your WiFi connection does not match the class requirements.");
       return false;
     }
 
@@ -277,7 +277,7 @@ class CourseController extends GetxController {
       // Remove Loader
       MyAppFullScreenLoader.stopLoading();
       Get.close(1);
-      MyAppLoader.successSnackBar(title: 'Success', message: 'Successfully added a course!');
+      MyAppLoader.successSnackBar(title: 'Success', message: 'Successfully added a class!');
     } catch (e) {
       // Remove Loader
       MyAppFullScreenLoader.stopLoading();

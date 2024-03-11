@@ -22,7 +22,7 @@ dependencies:
   rive: ^0.11.3
   shimmer: ^3.0.0
   image_picker: ^1.0.7
-  url_launcher: ^6.2.2
+  url_launcher: ^6.2.5
   connectivity_plus: ^5.0.2
   flutter_native_splash: ^2.3.8
   smooth_page_indicator: ^1.1.0
@@ -53,6 +53,8 @@ dependencies:
   printing: ^5.11.1
   path_provider: ^2.1.2
   animations: ^2.0.11
+  google_fonts: ^6.2.0
+  csv: ^6.0.0
   
 
 
@@ -79,14 +81,16 @@ flutter:
     - assets/images/signup_images/
     - assets/images/home_images/
     - assets/images/animations/
+    - assets/fonts/
     
 
 
   # ------------------- LOCAL FONTS ------------------- #
-#fonts:
-  #- family:
-    #fonts:
-      #-assets: fonts/___.ttf
-      #style: italic
-      #weight:
-      #สร้างfolder fonts ใน assets แล้วใส่.ttfลงไป
+  fonts:
+    - family: Kanit
+      fonts:
+        - asset: assets/fonts/Kanit-Regular.ttf
+          weight: 300
+        - asset: assets/fonts/Kanit-Light.ttf
+          weight: 100
+          style: italic

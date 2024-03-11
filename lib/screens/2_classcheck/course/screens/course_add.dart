@@ -50,7 +50,7 @@ class CourseAddScreen extends StatelessWidget {
                   TextFormField(
                     controller: controller.courseName,
                     validator: (value) => MyAppValidator.validationEmptyText(
-                        'Course Name', value),
+                        'Class Name', value),
                     expands: false,
                     decoration: const InputDecoration(
                       labelText: MyAppText.courseName,

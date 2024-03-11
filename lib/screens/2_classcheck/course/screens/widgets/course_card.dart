@@ -161,7 +161,7 @@ class CourseCard extends StatelessWidget {
       // Handle the null case for classCode
       Get.snackbar(
         "No Class Code",
-        "This course does not have a class code.",
+        "This class does not have a class code.",
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.redAccent,
         colorText: Colors.white,

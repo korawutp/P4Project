@@ -35,9 +35,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
   void deleteCourseWarningPopup(String id, DateTime dateTime) {
     Get.defaultDialog(
       contentPadding: const EdgeInsets.all(MyAppSizes.md),
-      title: 'Delete Course',
+      title: 'Delete Class',
       middleText:
-          'Are you sure you want to delete this course permanently? This action is not reversible and all of course data will be removed permanently.',
+          'Are you sure you want to delete this class permanently? This action is not reversible and all of class data will be removed permanently.',
       confirm: ElevatedButton(
         onPressed: () {
           deleteCourse(id, dateTime);
@@ -165,7 +165,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       },
                     );
                   } else {
-                    return Text("No courses found for this date.");
+                    return Text("No classes found for this date.");
                   }
                 },
               ),

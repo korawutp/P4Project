@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 // import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
@@ -11,21 +12,21 @@ import 'package:workproject/screens/2_classcheck/course/models/student_model.dar
 Future<void> createAndDisplayPdf(
     BuildContext context, List<StudentModel> students, String courseName, DateTime createdAt, String createdBy) async {
   final pdf = pw.Document();
-  // final theme = pw.ThemeData.withFont(
-  //   base: pw.Font.ttf(await rootBundle.load("assets/fonts/OpenSans-Regular.ttf")),
-  //   bold: pw.Font.ttf(await rootBundle.load("assets/fonts/OpenSans-Bold.ttf")),
-  // );
+  final theme = pw.ThemeData.withFont(
+    base: pw.Font.ttf(await rootBundle.load("assets/fonts/Kanit-Regular.ttf")),
+    bold: pw.Font.ttf(await rootBundle.load("assets/fonts/Kanit-Bold.ttf")),
+  );
 
   final String formattedCreatedAt = DateFormat('dd MMM yyyy-kk:mm').format(createdAt);
 
   pdf.addPage(
     pw.Page(
-      // theme: theme,
+      theme: theme,
       build: (pw.Context context) {
         return pw.Column(
           crossAxisAlignment: pw.CrossAxisAlignment.start,
           children: [
-            pw.Text("Course Name: $courseName", style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold)),
+            pw.Text("Class Name: $courseName", style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold)),
             pw.SizedBox(height: 10),
             pw.Text("Created by $createdBy, On $formattedCreatedAt",
                 style: pw.TextStyle(

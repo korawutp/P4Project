@@ -6,8 +6,7 @@ class MyAppText {
   static const String appName = 'ClassCheck';
 
   // -- App Description
-  static const String appDescription =
-      'A starter kit for beginner learns with all the basic necessary features.';
+  static const String appDescription = 'A starter kit for beginner learns with all the basic necessary features.';
 
   // -- App Version
   static const String appVersion = '1.0.0';
@@ -28,8 +27,7 @@ class MyAppText {
 
   // -- Login
   static const String loginTitle = 'Welcome!';
-  static const String loginSubTitle =
-      'Welcome to ClassCheck application. Please enter your email & password';
+  static const String loginSubTitle = 'Welcome to ClassCheck application. Please enter your email & password';
   static const String email = 'Email';
   static const String emailHint = 'Enter your email';
   static const String password = 'Password';
@@ -74,24 +72,21 @@ class MyAppText {
       "Your account security is our priority! We've sent you a secure link to safely change your password and keep your account protected.";
 
   // -- Home
-  static const String searchCourse = 'Search your courses';
+  static const String searchCourse = 'Search your classes';
   static const String howWasYourClass = 'How was your class today?';
   static const String enrolledClass = "Let's see your classes";
 
   // -- Course
   static const String popupTitle = 'Grandma is watching you!';
-  static const String popupSubTitle1 =
-      'Check your class and I hope you have a wonderful day!';
+  static const String popupSubTitle1 = 'Check your class and I hope you have a wonderful day!';
   static const String popupSubTitle2 =
       "Please enter the code below.\nIf you've filled complete, I hope you have a wonderful day!";
-  static const String addCourseTitle = 'Add New Course';
-  static const String courseName = 'Course Name';
+  static const String addCourseTitle = 'Add New Class';
+  static const String courseName = 'Class Name';
   static const String duration = 'Duration (Minutes)';
-  static const String addCourseSubTitle =
-      'Create a new course for students to attend in the classroom.';
+  static const String addCourseSubTitle = 'Create a new class for students to attend in the classroom.';
   static const String generateCode = 'Generate class code (If you need)';
   static const String classCode = 'Class Code:';
-  static const String courseTitle = 'Available Courses';
-  static const String noCourseFound =
-      "No courses found or all courses're expired...";
+  static const String courseTitle = 'Available Classes';
+  static const String noCourseFound = "No classes found or all classes're expired...";
 }
