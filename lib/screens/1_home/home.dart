@@ -110,31 +110,11 @@ class _HomeScreenState extends State<HomeScreen> {
         Expanded(
           child: ListView(
             children: const [
-              HomeClasstile(
-                  icon: Icons.class_,
-                  classNumber: '305491',
-                  className: 'Computer Engineering...',
-                  color: Colors.orange),
-              HomeClasstile(
-                  icon: Icons.class_,
-                  classNumber: '305492',
-                  className: 'Computer Engineering...',
-                  color: Colors.blue),
-              HomeClasstile(
-                  icon: Icons.class_,
-                  classNumber: '000000',
-                  className: 'Classname',
-                  color: Colors.green),
-              HomeClasstile(
-                  icon: Icons.class_,
-                  classNumber: '111111',
-                  className: 'Classname',
-                  color: Colors.pink),
-              HomeClasstile(
-                  icon: Icons.class_,
-                  classNumber: '222222',
-                  className: 'Classname',
-                  color: Colors.purple),
+              HomeClasstile(icon: Icons.class_, color: Colors.orange),
+              HomeClasstile(icon: Icons.class_, color: Colors.blue),
+              HomeClasstile(icon: Icons.class_, color: Colors.green),
+              HomeClasstile(icon: Icons.class_, color: Colors.pink),
+              HomeClasstile(icon: Icons.class_, color: Colors.purple),
             ],
           ),
         )

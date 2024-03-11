@@ -74,7 +74,7 @@ class MyAppText {
   // -- Home
   static const String searchCourse = 'Search your classes';
   static const String howWasYourClass = 'How was your class today?';
-  static const String enrolledClass = "Let's see your classes";
+  static const String enrolledClass = "STAY TUNED!";
 
   // -- Course
   static const String popupTitle = 'Grandma is watching you!';
